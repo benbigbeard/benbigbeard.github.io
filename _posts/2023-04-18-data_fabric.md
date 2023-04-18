@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Data Fabric.
+title: Federated Search.
 ---
 
 If you're a tech enthusiast, you've probably heard about Splunk. It's a powerful data analysis and visualization tool that can help organizations gain valuable insights into their systems, applications, and networks. One of the key features that makes Splunk so useful is its federated search capability, which enables users to search across multiple Splunk instances and other data sources with a single query.
