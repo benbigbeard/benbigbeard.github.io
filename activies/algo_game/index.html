@@ -36,6 +36,13 @@
       justify-items: center;
     }
 
+    .left-panel h2 {
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 15px;
+  color: #f04e98; /* Bold pink to match your design */
+}
+
     .right-panel {
       width: 70%;
       display: flex;
@@ -174,6 +181,7 @@
   <div class="game-container">
     <!-- Left Panel -->
     <div class="left-panel" id="left-panel">
+      <h2>Scenarios - click to flip</h2>
       <div class="square" id="tile1" data-answer="regression" draggable="true" onclick="flipTile(this)">
         <div class="square-inner">
           <div class="square-front">
