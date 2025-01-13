@@ -43,6 +43,14 @@
   color: #f04e98; /* Bold pink to match your design */
 }
 
+    .left-panel-heading {
+  grid-column: span 2; /* Makes the heading span both columns */
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #f04e98; /* Bold pink to match the design */
+}
+
     .right-panel {
       width: 70%;
       display: flex;
@@ -181,7 +189,7 @@
   <div class="game-container">
     <!-- Left Panel -->
     <div class="left-panel" id="left-panel">
-      <h2>Scenarios - click to flip</h2>
+      <h2 class="left-panel-heading">Scenarios - click to flip</h2>
       <div class="square" id="tile1" data-answer="regression" draggable="true" onclick="flipTile(this)">
         <div class="square-inner">
           <div class="square-front">
