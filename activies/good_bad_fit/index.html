@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modified Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #ffe6eb; /* Soft pink background */
+    }
+
+    .game-container {
+      display: flex;
+      flex-direction: row;
+      width: 90%;
+      height: 80vh; /* Fixed height for consistency */
+      margin: 20px 0;
+    }
+
+    .left-panel {
+      width: 30%;
+      border: 2px solid #f04e98; /* Bold pink border */
+      padding: 10px;
+      background: #fce4f6; /* Light pink background */
+      display: flex;
+      flex-direction: column;
+      gap: 15px; /* Add spacing between rectangles */
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .left-panel h3 {
+      background: #f04e98;
+      color: white;
+      width: 100%;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 16px;
+      font-weight: bold;
+      border-bottom: 2px solid #ee4266;
+      margin-bottom: 15px;
+    }
+
+    .right-panel {
+      width: 70%;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: stretch; /* Ensure columns match the left panel's height */
+    }
+
+    .rectangle {
+      width: 90%; /* Make rectangles wider */
+      height: 60px; /* Landscape height */
+      border: 2px solid #6a4c93; /* Deep purple border for rectangles */
+      background: #ffe6eb; /* Light pink for rectangle faces */
+      display: flex;
+      justify-content: center; /* Horizontally center the content */
+      align-items: center; /* Vertically center the content */
+      cursor: pointer; /* Show pointer to indicate interactivity */
+      transition: transform 0.3s ease;
+    }
+
+    .rectangle:hover {
+      transform: scale(1.05); /* Slightly enlarge on hover */
+    }
+
+    .table-column {
+      flex: 1;
+      max-width: 45%;
+      height: calc(100% - 20px); /* Align column height with left panel */
+      border: 2px dashed #ee4266; /* Strong pink-red for drop zone borders */
+      background: #fff5f7; /* Light pink for drop zones */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 30px; /* Larger spacing between tiles in the columns */
+      padding: 10px;
+    }
+
+    .table-column h3 {
+      background: #ee4266;
+      color: white;
+      width: 100%;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 16px;
+      font-weight: bold;
+      border-bottom: 2px solid #f04e98;
+      margin-bottom: 15px;
+    }
+
+    #controls {
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 0 10px;
+      cursor: pointer;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+
+    .reset-button {
+      background: #ff0000; /* Red for reset */
+    }
+
+    .reset-button:hover {
+      background: #cc0000; /* Darker red on hover */
+    }
+
+    .submit-button {
+      background: #00cc00; /* Green for submit */
+    }
+
+    .submit-button:hover {
+      background: #009900; /* Darker green on hover */
+    }
+  </style>
+</head>
+<body>
+  <h1>Drag the scenarios into the correct category</h1>
+  <div class="game-container">
+    <!-- Left Panel -->
+    <div class="left-panel" id="left-panel">
+      <h3>Scenarios</h3>
+      <div class="rectangle" id="tile1" data-answer="good-fit" draggable="true">
+        Predict revenue of T-shirt sales following new release
+      </div>
+      <div class="rectangle" id="tile2" data-answer="bad-fit" draggable="true">
+        Group cats by their breed
+      </div>
+      <div class="rectangle" id="tile3" data-answer="good-fit" draggable="true">
+        Assign customers to groups based on their behavior
+      </div>
+      <div class="rectangle" id="tile4" data-answer="bad-fit" draggable="true">
+        Predict house prices over the next couple of years
+      </div>
+      <div class="rectangle" id="tile5" data-answer="good-fit" draggable="true">
+        Detect spam emails in users' mailboxes
+      </div>
+      <div class="rectangle" id="tile6" data-answer="bad-fit" draggable="true">
+        Group plants by species or features
+      </div>
+      <div class="rectangle" id="tile7" data-answer="good-fit" draggable="true">
+        Classify current weather conditions
+      </div>
+      <div class="rectangle" id="tile8" data-answer="bad-fit" draggable="true">
+        Predict customer churn rates
+      </div>
+    </div>
+
+    <!-- Right Panel -->
+    <div class="right-panel">
+      <div class="table-column" id="good-fit-column" data-type="good-fit">
+        <h3>Good Fit</h3>
+      </div>
+      <div class="table-column" id="bad-fit-column" data-type="bad-fit">
+        <h3>Bad Fit</h3>
+      </div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <div id="controls">
+    <button id="submit-button" class="submit-button">Submit</button>
+    <button id="clear-button" class="reset-button">Reset</button>
+  </div>
+
+  <script>
+    const rectangles = document.querySelectorAll('.rectangle');
+    const columns = document.querySelectorAll('.table-column');
+    const resetButton = document.getElementById('clear-button');
+    const submitButton = document.getElementById('submit-button');
+
+    rectangles.forEach(rectangle => {
+      rectangle.addEventListener('dragstart', (e) => {
+        if (rectangle.classList.contains('locked')) {
+          e.preventDefault();
+          return;
+        }
+        e.dataTransfer.setData('text/plain', e.target.id);
+      });
+    });
+
+    columns.forEach(column => {
+      column.addEventListener('dragover', (e) => e.preventDefault());
+      column.addEventListener('drop', (e) => {
+        const id = e.dataTransfer.getData('text/plain');
+        const dragged = document.getElementById(id);
+        if (!dragged.classList.contains('locked')) {
+          column.appendChild(dragged);
+          dragged.classList.add('locked');
+        }
+      });
+    });
+
+    submitButton.addEventListener('click', () => {
+      let correct = 0;
+      columns.forEach(column => {
+        const answerType = column.dataset.type;
+        const child = column.querySelector(`[data-answer="${answerType}"]`);
+        if (child) correct++;
+      });
+      alert(`You got ${correct} out of ${rectangles.length} correct!`);
+    });
+
+    resetButton.addEventListener('click', () => {
+      const leftPanel = document.getElementById('left-panel');
+      rectangles.forEach(rectangle => {
+        leftPanel.appendChild(rectangle);
+        rectangle.classList.remove('locked');
+      });
+    });
+  </script>
+</body>
+</html>
