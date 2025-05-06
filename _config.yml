@@ -1,10 +1,10 @@
-title: "Ben BigBeard"
+title: "Ben Lovley"
 description: "Showcasing tech, talks, toys, and tinkering"
 url: "https://benbigbeard.github.io"
 baseurl: ""
 
 remote_theme: "mmistakes/minimal-mistakes"
-minimal_mistakes_skin: "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin: "air" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 plugins:
   - jekyll-feed
