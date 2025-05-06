@@ -27,3 +27,10 @@ defaults:
     values:
       layout: single
       author_profile: true
+  - scope:
+      path: "_docs"
+      type: pages
+    values:
+      sidebar:
+        nav: "docs"
+      toc: true
