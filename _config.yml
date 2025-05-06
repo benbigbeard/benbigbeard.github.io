@@ -12,7 +12,7 @@ plugins:
 
 author:
   name: "Ben Lovley"
-  avatar: "/assets/images/ben.jpg"  # Add this later
+  avatar: "/_assets/images/me_headshot.jpeg"  
   bio: "Technologist | Public Speaker | Builder of Weird and Wonderful Things"
 
 collections:
