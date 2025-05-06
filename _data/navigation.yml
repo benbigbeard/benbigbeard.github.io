@@ -1,0 +1,11 @@
+main:
+  - title: "About"
+    url: /about/
+  - title: "Projects"
+    url: /projects/
+  - title: "Talks"
+    url: /talks/
+  - title: "Media"
+    url: /media/
+  - title: "Contact"
+    url: /contact/
