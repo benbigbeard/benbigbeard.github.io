@@ -30,11 +30,12 @@ defaults:
     values:
       layout: single
       author_profile: true
+
   - scope:
-    path: ""
-    type: docs
-  values:
-    layout: single
-    sidebar:
-      nav: "docs"
-    toc: true
+      path: ""
+      type: docs
+    values:
+      layout: single
+      sidebar:
+        nav: "docs"
+      toc: true
