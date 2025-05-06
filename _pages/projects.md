@@ -1,13 +1,27 @@
 ---
+layout: splash
 title: "Projects"
 permalink: /projects/
-layout: single
+intro: 
+  - excerpt: "A collection of things I've built, broken, or tinkered with."
+feature_row:
+  - image_path: /assets/images/splunk-app.png
+    alt: "Screenshot of Splunk demo app"
+    title: "Splunk Interactive Demo"
+    excerpt: "An iOS app streaming real-time telemetry to Splunk."
+    url: /projects/splunk-demo/           # internal
+
+  - image_path: /assets/images/trx4m.jpg
+    alt: "Photo of modified RC vehicle"
+    title: "RC ESP32 Mod"
+    excerpt: "Controlled via web app using ESP32 and PWM."
+    url: https://github.com/benbigbeard/trx4m-esp32  # external
+
+  - image_path: /assets/images/fysher-vice.png
+    alt: "Photo of toy"
+    title: "Fysher Vice"
+    excerpt: "A 3D printed adult novelty toy disguised as a kid’s toy."
+    url: /downloads/fysher-vice-v1.stl   # direct download
+    btn_label: "Download STL"
+    btn_class: "btn--success"
 ---
-
-Here’s a selection of the things I’ve built or contributed to:
-
-- **Splunk Interactive Demo App** — A live iOS app that streams telemetry to Splunk for demoing observability.
-- **RC Vehicle ESP32 Mod** — Replacing the ECM of a Traxxas TRX-4M with an ESP32 and controlling it via web UI.
-- **Fysher Vice** — A novelty 3D-printed adult toy line styled like Fisher-Price.
-
-More to come soon...
