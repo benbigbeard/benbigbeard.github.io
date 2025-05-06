@@ -2,7 +2,12 @@
 title: "About"
 permalink: /about/
 layout: single
+author_profile: true
+toc: true
+sidebar:
+  nav: "main"
 ---
+
 
 Hi, I'm Ben — a technologist who enjoys building Splunk apps, modding RC vehicles, 3D printing, and sharing knowledge through public speaking.
 
