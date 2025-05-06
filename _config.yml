@@ -38,13 +38,6 @@ collections:
 defaults:
   - scope:
       path: ""
-      type: pages
-    values:
-      layout: single
-      sidebar:
-        nav: "main_page"
-  - scope:
-      path: ""
       type: docs
     values:
       layout: single
@@ -55,11 +48,5 @@ defaults:
       path: ""
       type: pages
     values:
-      author_profile: false
-  - scope:
-      path: ""
-      type: pages
-    values:
-      permalink: /
       author_profile: false
 

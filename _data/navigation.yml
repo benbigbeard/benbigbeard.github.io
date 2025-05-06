@@ -8,10 +8,6 @@ main:
   - title: "Contact"
     url: /contact/
 
-main_page:
-  - title: "🏠 Home"
-    url: /
-
 docs:
   - title: Getting Started
     children:
