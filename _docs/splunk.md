@@ -1,7 +1,7 @@
 ---
 layout: splash
 title: "Splunk"
-permalink: /splunk/
+permalink: /docs/splunk/
 excerpt: "A collection of Splunk content."
 
 feature_row:
