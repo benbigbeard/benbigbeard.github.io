@@ -4,6 +4,7 @@ url: "https://benbigbeard.github.io"
 baseurl: ""
 
 remote_theme: "mmistakes/minimal-mistakes"
+minimal_mistakes_skin: "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 plugins:
   - jekyll-feed
@@ -30,13 +31,11 @@ defaults:
     values:
       layout: single
       author_profile: true
-
   - scope:
-      path: "_docs"
-      type: ""
+      path: ""
+      type: docs
     values:
       layout: single
       sidebar:
         nav: "docs"
       toc: true
-
