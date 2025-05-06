@@ -2,6 +2,7 @@
 title: "Talks"
 permalink: /talks/
 layout: single
+author_profile: false
 ---
 
 I've delivered talks across the UK public sector and tech communities:
