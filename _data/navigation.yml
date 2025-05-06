@@ -13,4 +13,6 @@ docs:
     children:
       - title: "Quick-Start Guide"
         url: /docs/quick-start-guide/
+      - title: "Splunk"
+        url: /docs/splunk/
 
