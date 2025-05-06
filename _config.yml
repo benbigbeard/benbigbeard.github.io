@@ -32,10 +32,11 @@ defaults:
       author_profile: true
 
   - scope:
-      path: ""
-      type: docs
+      path: "_docs"
+      type: ""
     values:
       layout: single
       sidebar:
         nav: "docs"
       toc: true
+
