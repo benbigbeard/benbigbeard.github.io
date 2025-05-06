@@ -31,9 +31,10 @@ defaults:
       layout: single
       author_profile: true
   - scope:
-      path: "docs"
-      type: pages
-    values:
-      sidebar:
-        nav: "docs"
-      toc: true
+    path: ""
+    type: docs
+  values:
+    layout: single
+    sidebar:
+      nav: "docs"
+    toc: true
