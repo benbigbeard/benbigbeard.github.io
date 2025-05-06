@@ -19,6 +19,9 @@ collections:
   pages:
     output: true
     permalink: /:name/
+  docs:
+    output: true
+    permalink: /:collection/:name/
 
 defaults:
   - scope:
@@ -28,7 +31,7 @@ defaults:
       layout: single
       author_profile: true
   - scope:
-      path: "_docs"
+      path: "docs"
       type: pages
     values:
       sidebar:
