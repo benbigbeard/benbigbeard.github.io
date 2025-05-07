@@ -1,6 +1,6 @@
 var store = [{
         "title": "Splunk",
-        "excerpt":"                                                                                                                     API                                                                                                      Learn More                                                                                                                                                    Dashboards                                                                                                      Learn More                                                                                                                                                    Misc                                                                                                      Learn More                                                                                                                                                    Searches                                                                                                      Learn More                                        ","categories": [],
+        "excerpt":"                                                                                                                     API                                                                                                      Learn More                                                                                                                                                    Dashboards                                                                                                      Learn More                                                                                                                                                            Misc                                                                                                      Learn More                                                                                                                                                    Searches                                                                                                      Learn More                                        ","categories": [],
         "tags": [],
         "url": "/docs/splunk/",
         "teaser": null
@@ -12,7 +12,7 @@ var store = [{
         "teaser": null
       },{
         "title": "Contact",
-        "excerpt":"📬 Feel free to reach out:      GitHub: @benbigbeard   LinkedIn: Ben Lovley   Email: your.email@example.com  ","categories": [],
+        "excerpt":"📬 Feel free to reach out:      GitHub: @benbigbeard   LinkedIn: Ben Lovley   Email: ben@splunk.com  ","categories": [],
         "tags": [],
         "url": "/contact/",
         "teaser": null

@@ -8,4 +8,4 @@ layout: single
 
 - GitHub: [@benbigbeard](https://github.com/benbigbeard)
 - LinkedIn: [Ben Lovley](https://www.linkedin.com/in/benlovley)
-- Email: [your.email@example.com](mailto:your.email@example.com)
+- Email: [ben@splunk.com](mailto:ben@splunk.com)
