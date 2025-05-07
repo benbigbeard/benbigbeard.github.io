@@ -38,6 +38,10 @@ collections:
 defaults:
   - scope:
       path: ""
+    values:
+      css: "/assets/css/custom.css"
+  - scope:
+      path: ""
       type: docs
     values:
       layout: single
