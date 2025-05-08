@@ -1,4 +1,10 @@
 var store = [{
+        "title": "Activities",
+        "excerpt":"Dashboards This is some sample content that goes here with Markdown formatting. Read More Placeholder 2 This is some sample content that goes here with Markdown formatting. Read More Placeholder 3 This is some sample content that goes here with Markdown formatting. Read More Placeholder 3 This is some sample...","categories": [],
+        "tags": [],
+        "url": "/docs/activities/",
+        "teaser": null
+      },{
         "title": "Splunk",
         "excerpt":"Dashboards This is some sample content that goes here with Markdown formatting. Read More Placeholder 2 This is some sample content that goes here with Markdown formatting. Read More Placeholder 3 This is some sample content that goes here with Markdown formatting. Read More Placeholder 3 This is some sample...","categories": [],
         "tags": [],
@@ -9,6 +15,12 @@ var store = [{
         "excerpt":"Hi, I’m Ben — a technologist who enjoys building Splunk apps, modding RC vehicles, 3D printing, and sharing knowledge through public speaking.   This site is a central home for the things I build, the ideas I explore, and the lessons I learn along the way.  ","categories": [],
         "tags": [],
         "url": "/about/",
+        "teaser": null
+      },{
+        "title": "Ai_readiness",
+        "excerpt":"Before the Magic: AI Readiness Assessment Before the Magic: AI Readiness Assessment 1. Trust Your Data Is your data timely, complete, and reliable, even under pressure? We measure data latency across key systems We can detect and alert on missing or delayed data Data quality is tracked and regularly reported...","categories": [],
+        "tags": [],
+        "url": "/pages/ai_readiness/",
         "teaser": null
       },{
         "title": "Contact",

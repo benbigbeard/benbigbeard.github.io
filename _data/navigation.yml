@@ -13,4 +13,5 @@ docs:
     children:
       - title: "Splunk"
         url: /docs/splunk/
-
+      - title: "Activities"
+        url: /docs/activities/

@@ -1,0 +1,335 @@
+---
+layout: none
+permalink: /pages/ai_readiness/
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Before the Magic: AI Readiness Assessment</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .section {
+      background: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .section h2 {
+      margin-top: 0;
+    }
+
+    .description {
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+
+    .checkbox-group label {
+      display: block;
+      margin: 6px 0;
+    }
+
+    .counter {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .summary {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .result {
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+
+    .result.red { color: red; }
+    .result.orange { color: orange; }
+    .result.green { color: green; }
+
+    .clear-btn {
+  margin-top: 10px;
+  padding: 6px 12px;
+  font-size: 0.9em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #eee;
+  color: #333;
+  cursor: pointer;
+}
+
+.clear-btn:hover {
+  background: #ddd;
+}
+
+#reset-button {
+  background-color: #dc3545;
+  margin-left: 10px;
+}
+
+#reset-button:hover {
+  background-color: #a71d2a;
+}
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1em;
+      border: none;
+      border-radius: 5px;
+      background: #007BFF;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Before the Magic: AI Readiness Assessment</h1>
+
+  <!-- SECTION 1 -->
+  <div class="section" data-section="0">
+    <h2>1. Trust Your Data</h2>
+    <div class="description">Is your data timely, complete, and reliable, even under pressure?</div>
+    <div class="checkbox-group">
+      <label><input type="checkbox" onchange="updateScores()"> We measure data latency across key systems</label>
+      <label><input type="checkbox" onchange="updateScores()"> We can detect and alert on missing or delayed data</label>
+      <label><input type="checkbox" onchange="updateScores()"> Data quality is tracked and regularly reported</label>
+      <label><input type="checkbox" onchange="updateScores()"> Business-critical telemetry is never manually curated</label>
+    </div>
+    <div class="counter" id="counter-0">0/4 completed</div>
+    <button class="clear-btn" onclick="clearSection(this)">Clear Section</button>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="section" data-section="1">
+    <h2>2. Monitor What Matters</h2>
+    <div class="description">Are we tracking signals that reflect business and user impact, not just infrastructure?</div>
+    <div class="checkbox-group">
+      <label><input type="checkbox" onchange="updateScores()"> Our dashboards highlight customer-facing issues</label>
+      <label><input type="checkbox" onchange="updateScores()"> We include real user experience (RUM or synthetic data)</label>
+      <label><input type="checkbox" onchange="updateScores()"> Alerting is mapped to business KPIs</label>
+      <label><input type="checkbox" onchange="updateScores()"> Execs see the same data as technical teams</label>
+    </div>
+    <div class="counter" id="counter-1">0/4 completed</div>
+    <button class="clear-btn" onclick="clearSection(this)">Clear Section</button>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="section" data-section="2">
+    <h2>3. Centralise Visibility</h2>
+    <div class="description">Can all stakeholders access shared truth?</div>
+    <div class="checkbox-group">
+      <label><input type="checkbox" onchange="updateScores()"> Unified platform for logs, metrics, traces</label>
+      <label><input type="checkbox" onchange="updateScores()"> No reliance on tribal knowledge</label>
+      <label><input type="checkbox" onchange="updateScores()"> Incident response uses shared data views</label>
+      <label><input type="checkbox" onchange="updateScores()"> Tools promote collaboration, not silos</label>
+    </div>
+    <div class="counter" id="counter-2">0/4 completed</div>
+    <button class="clear-btn" onclick="clearSection(this)">Clear Section</button>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="section" data-section="3">
+    <h2>4. Align to Business</h2>
+    <div class="description">Does telemetry reflect real outcomes and risks?</div>
+    <div class="checkbox-group">
+      <label><input type="checkbox" onchange="updateScores()"> Maps directly to user journeys</label>
+      <label><input type="checkbox" onchange="updateScores()"> Downtime is measured by user impact</label>
+      <label><input type="checkbox" onchange="updateScores()"> Business teams help define alerts</label>
+      <label><input type="checkbox" onchange="updateScores()"> Metrics are explained in business language</label>
+    </div>
+    <div class="counter" id="counter-3">0/4 completed</div>
+    <button class="clear-btn" onclick="clearSection(this)">Clear Section</button>
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="section" data-section="4">
+    <h2>5. Prepare for AI</h2>
+    <div class="description">Is our data model ready for explainability and trustworthy automation?</div>
+    <div class="checkbox-group">
+      <label><input type="checkbox" onchange="updateScores()"> AI decisions are traceable</label>
+      <label><input type="checkbox" onchange="updateScores()"> Hallucinations/anomalies are detectable</label>
+      <label><input type="checkbox" onchange="updateScores()"> Supports low-latency inference</label>
+      <label><input type="checkbox" onchange="updateScores()"> Observability validates predictions</label>
+    </div>
+    <div class="counter" id="counter-4">0/4 completed</div>
+  </div>
+
+  <!-- SUMMARY -->
+<div class="summary">
+  <div class="result" id="readiness-result">You scored 0/20</div>
+  <button onclick="downloadResults()">Download My Results</button>
+  <button onclick="emailResults()">Email My Results</button>
+</div>
+  <div class="summary">
+  <button id="reset-button" onclick="handleReset()">Reset All</button>
+</div>
+
+
+  <script>
+
+    function clearSection(button) {
+  const section = button.closest('.section');
+  const checkboxes = section.querySelectorAll('input[type="checkbox"]');
+  checkboxes.forEach(cb => cb.checked = false);
+  updateScores();
+}
+
+  function updateScores() {
+    let totalScore = 0;
+    const sections = document.querySelectorAll('.section');
+    const sectionFeedback = [];
+    const sectionScores = [];
+
+    let anyZeroSection = false;
+    let allSectionsAtLeastOne = true;
+    let allSectionsAtLeastTwo = true;
+
+    sections.forEach((section, idx) => {
+      const checkboxes = section.querySelectorAll('input[type="checkbox"]');
+      let sectionScore = 0;
+      checkboxes.forEach(cb => {
+        if (cb.checked) sectionScore++;
+      });
+
+      document.getElementById(`counter-${idx}`).textContent = `${sectionScore}/4 completed`;
+      sectionScores.push(sectionScore);
+      totalScore += sectionScore;
+
+      if (sectionScore === 0) {
+        anyZeroSection = true;
+        sectionFeedback.push(`Section ${idx + 1} is empty — consider reviewing it.`);
+      }
+
+      if (sectionScore < 1) allSectionsAtLeastOne = false;
+      if (sectionScore < 2) allSectionsAtLeastTwo = false;
+    });
+
+    const resultText = document.getElementById('readiness-result');
+    let message = `You scored ${totalScore}/20`;
+
+    if (totalScore <= 8 || anyZeroSection) {
+      resultText.className = 'result red';
+      message += ' — Not AI-ready';
+    } else if (totalScore <= 15 && allSectionsAtLeastOne) {
+      resultText.className = 'result orange';
+      message += ' — Partially Ready';
+    } else if (totalScore > 15 && allSectionsAtLeastTwo) {
+      resultText.className = 'result green';
+      message += ' — Ready for AI Innovation';
+    } else {
+      resultText.className = 'result orange';
+      message += ' — Partially Ready (inconsistent section coverage)';
+    }
+
+    // Include any section feedback
+    if (sectionFeedback.length > 0) {
+      message += `<br><br><small>${sectionFeedback.join('<br>')}</small>`;
+    }
+
+    resultText.innerHTML = message;
+  }
+
+function downloadResults() {
+  const sectionResults = [];
+
+  document.querySelectorAll('.section').forEach((section, idx) => {
+    const title = section.querySelector('h2').textContent.trim();
+    const checkboxes = section.querySelectorAll('input[type="checkbox"]');
+    const labels = section.querySelectorAll('label');
+    const completedText = section.querySelector(`#counter-${idx}`).textContent;
+
+    let checklist = [];
+    checkboxes.forEach((cb, i) => {
+      const text = labels[i].textContent.trim();
+      checklist.push(`${cb.checked ? '[X]' : '[ ]'} ${text}`);
+    });
+
+    sectionResults.push(`${title}\n${completedText}\n${checklist.join('\n')}`);
+  });
+
+  const resultRaw = document.getElementById('readiness-result').innerText;
+  const fullText = `AI Readiness Checklist Result\n\n${sectionResults.join('\n\n')}\n\n${resultRaw}`;
+
+  const blob = new Blob([fullText], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'ai_readiness_result.txt';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function emailResults() {
+  const sectionResults = [];
+
+  document.querySelectorAll('.section').forEach((section, idx) => {
+    const title = section.querySelector('h2').textContent.trim();
+    const checkboxes = section.querySelectorAll('input[type="checkbox"]');
+    const labels = section.querySelectorAll('label');
+    const completedText = section.querySelector(`#counter-${idx}`).textContent;
+
+    let checklist = [];
+    checkboxes.forEach((cb, i) => {
+      const text = labels[i].textContent.trim();
+      checklist.push(`${cb.checked ? '[X]' : '[ ]'} ${text}`);
+    });
+
+    sectionResults.push(`${title}\n${completedText}\n${checklist.join('\n')}`);
+  });
+
+  const resultRaw = document.getElementById('readiness-result').innerText;
+  const fullText = `AI Readiness Checklist Result\n\n${sectionResults.join('\n\n')}\n\n${resultRaw}`;
+
+  const mailtoLink = `mailto:?subject=AI Readiness&body=${encodeURIComponent(fullText)}`;
+  window.location.href = mailtoLink;
+}
+
+  let resetConfirmed = false;
+
+function handleReset() {
+  const button = document.getElementById('reset-button');
+
+  if (!resetConfirmed) {
+    button.textContent = 'Click Again';
+    resetConfirmed = true;
+    return;
+  }
+
+  // Uncheck all checkboxes
+  document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+
+  // Reset confirmation state
+  resetConfirmed = false;
+  button.textContent = 'Reset All';
+
+  // Update scores
+  updateScores();
+}
+
+</script>
+
+</body>
+</html>
