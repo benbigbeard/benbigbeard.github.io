@@ -6,6 +6,7 @@
   position: fixed;
   top: 0px;
   width: 100%;                    //<-- set header's width
+  background: $background-color;
   height: 85px;                   //<-- set header's height
   border-bottom: 1px solid $border-color;
   -webkit-animation: $intro-transition;
