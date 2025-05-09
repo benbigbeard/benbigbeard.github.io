@@ -5,6 +5,8 @@
 .masthead {
   position: fixed;
   top: 0px;
+  width: 100%;                    //<-- set header's width
+  height: 85px;                   //<-- set header's height
   border-bottom: 1px solid $border-color;
   -webkit-animation: $intro-transition;
   animation: $intro-transition;
