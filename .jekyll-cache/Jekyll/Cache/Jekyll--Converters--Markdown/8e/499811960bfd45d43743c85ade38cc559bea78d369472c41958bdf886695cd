@@ -1,0 +1,92 @@
+I"Q
+<div class="feature__wrapper">
+
+  
+    <div class="feature__item">
+      <div class="archive__item">
+        
+          <div class="archive__item-teaser">
+            <img src="/assets/images/splunk-app.png" alt="Screenshot of Splunk demo app" />
+            
+          </div>
+        
+
+        <div class="archive__item-body">
+          
+            <h2 class="archive__item-title">Splunk Interactive Demo</h2>
+          
+
+          
+            <div class="archive__item-excerpt">
+              <p>An iOS app streaming real-time telemetry to Splunk.</p>
+
+            </div>
+          
+
+          
+            <p><a href="/projects/splunk-demo/" class="btn ">Learn More</a></p>
+          
+        </div>
+      </div>
+    </div>
+  
+    <div class="feature__item">
+      <div class="archive__item">
+        
+          <div class="archive__item-teaser">
+            <img src="/assets/images/trx4m.jpg" alt="Photo of modified RC vehicle" />
+            
+          </div>
+        
+
+        <div class="archive__item-body">
+          
+            <h2 class="archive__item-title">RC ESP32 Mod</h2>
+          
+
+          
+            <div class="archive__item-excerpt">
+              <p>Controlled via web app using ESP32 and PWM.</p>
+
+            </div>
+          
+
+          
+            <p><a href="https://github.com/benbigbeard/trx4m-esp32" class="btn ">Learn More</a></p>
+          
+        </div>
+      </div>
+    </div>
+  
+    <div class="feature__item">
+      <div class="archive__item">
+        
+          <div class="archive__item-teaser">
+            <img src="/assets/images/fysher-vice.png" alt="Photo of toy" />
+            
+          </div>
+        
+
+        <div class="archive__item-body">
+          
+            <h2 class="archive__item-title">Fysher Vice</h2>
+          
+
+          
+            <div class="archive__item-excerpt">
+              <p>3D printed adult novelty toy disguised as a kid’s toy.</p>
+
+            </div>
+          
+
+          
+            <p><a href="/downloads/fysher-vice-v1.stl" class="btn btn--success">Download STL</a></p>
+          
+        </div>
+      </div>
+    </div>
+  
+
+</div>
+
+:ET
