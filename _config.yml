@@ -3,7 +3,7 @@ description: "Showcasing tech, talks, toys, and tinkering"
 url: "https://benbigbeard.github.io"
 baseurl: ""
 
-remote_theme: "mmistakes/minimal-mistakes"
+theme: null
 minimal_mistakes_skin: "air" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 plugins:
