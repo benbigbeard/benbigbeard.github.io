@@ -1,6 +1,6 @@
 ---
 title: "Welcome to my new site!"
-excerpt: "I have found a gorwing need/want to keep a record of the varied things I get to work on..."
+excerpt: "I have found a growing need/want to keep a record of the varied things I get to work on..."
 layout: single
 author_profile: true
 ---
