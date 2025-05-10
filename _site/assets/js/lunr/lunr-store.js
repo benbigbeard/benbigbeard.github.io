@@ -47,9 +47,9 @@ var store = [{
         "url": "/talks/",
         "teaser": null
       },{
-        "title": "Getting Started",
-        "excerpt":"This is my first post on the site, built with Jekyll and Minimal Mistakes on a Raspberry Pi!  ","categories": [],
+        "title": "Welcome to my new site!",
+        "excerpt":"If you are reading this post, welcome! They say never start with an apology, but I shall break that. I will start by appologising that youh ave stumbled upon this content. It is not well presented, or polished, or even that interesting to a far amount of you I imagine....","categories": [],
         "tags": [],
-        "url": "/2025/05/09/getting-started.html",
+        "url": "/2025/05/10/new-site-wip.html",
         "teaser": null
       }]

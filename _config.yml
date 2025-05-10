@@ -16,7 +16,7 @@ plugins:
 author:
   name: "Ben Lovley"
   avatar: "/assets/images/me_headshot.jpeg"  
-  bio: "Technologist | Public Speaker"
+  bio: "Technologist"
   location: "United Kingdom"
   links:
     - label: "LinkedIn"
