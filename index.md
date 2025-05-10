@@ -1,5 +1,5 @@
 ---
-layout: single
+layout: home
 author_profile: true
 title: "Welcome"
 excerpt: "Welcome to my site! I build things, break things, and occasionally talk about both."

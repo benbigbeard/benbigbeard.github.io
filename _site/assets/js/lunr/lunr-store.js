@@ -46,4 +46,10 @@ var store = [{
         "tags": [],
         "url": "/talks/",
         "teaser": null
-      },]
+      },{
+        "title": "Getting Started",
+        "excerpt":"This is my first post on the site, built with Jekyll and Minimal Mistakes on a Raspberry Pi!  ","categories": [],
+        "tags": [],
+        "url": "/2025/05/09/getting-started.html",
+        "teaser": null
+      }]
