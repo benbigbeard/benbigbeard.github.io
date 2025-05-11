@@ -1,4 +1,10 @@
 var store = [{
+        "title": "3D Printing",
+        "excerpt":"                                                                                                                     AI Readiness Check                                                    Interactive form to measure AI readiness.                                                   Access                                        ","categories": [],
+        "tags": [],
+        "url": "/docs/3dprinting/",
+        "teaser": null
+      },{
         "title": "Activities",
         "excerpt":"                                                                                                                     AI Readiness Check                                                    Interactive form to measure AI readiness.                                                   Access                                                                                                                                                            Placeholder 3                                                    This is some sample content that goes here with Markdown formatting.                                                   Read More                                        ","categories": [],
         "tags": [],

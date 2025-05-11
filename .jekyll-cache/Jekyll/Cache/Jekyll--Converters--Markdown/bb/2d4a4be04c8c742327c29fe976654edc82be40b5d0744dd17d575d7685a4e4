@@ -1,0 +1,36 @@
+I"ì
+<div class="feature__wrapper">
+
+  
+    <div class="feature__item">
+      <div class="archive__item">
+        
+          <div class="archive__item-teaser">
+            <img src="https://cdn-icons-png.flaticon.com/512/5968/5968267.png" alt="AI Readiness Check" />
+            
+          </div>
+        
+
+        <div class="archive__item-body">
+          
+            <h2 class="archive__item-title">AI Readiness Check</h2>
+          
+
+          
+            <div class="archive__item-excerpt">
+              <p>Interactive form to measure AI readiness.</p>
+
+            </div>
+          
+
+          
+            <p><a href="/pages/ai_readiness/" class="btn btn--primary">Access</a></p>
+          
+        </div>
+      </div>
+    </div>
+  
+
+</div>
+
+:ET

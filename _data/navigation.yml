@@ -11,7 +11,9 @@ main:
 docs:
   - title: My Content
     children:
-      - title: "Splunk"
-        url: /docs/splunk/
+      - title: "3D Printing"
+        url: https://makerworld.com/en/@benlovley/upload
       - title: "Activities"
         url: /docs/activities/
+      - title: "Splunk"
+        url: /docs/splunk/
