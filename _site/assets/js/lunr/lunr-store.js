@@ -6,7 +6,7 @@ var store = [{
         "teaser": null
       },{
         "title": "Splunk",
-        "excerpt":"Dashboards This is some sample content that goes here with Markdown formatting. Read More Placeholder 2 This is some sample content that goes here with Markdown formatting. Read More Placeholder 3 This is some sample content that goes here with Markdown formatting. Read More Placeholder 3 This is some sample...","categories": [],
+        "excerpt":"Dashboards Collection of random dashboards I have created for various purposes Read More Searches Random Splunk searches that dont currently fit into any of the dashboards Read More API Some random API based scripts that are for various purposes Read More Miscellaneous Random Splunk content that doesnt fit the other...","categories": [],
         "tags": [],
         "url": "/docs/splunk/",
         "teaser": null

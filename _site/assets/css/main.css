@@ -235,7 +235,7 @@ textarea { overflow: auto; /* remove vertical scrollbar in IE6-9*/ vertical-alig
 /* ========================================================================== BASE ELEMENTS ========================================================================== */
 html { /* sticky footer fix */ position: relative; min-height: 100%; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
-body { margin: 0; padding: 70px 0 0; color: #222831; font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif; line-height: 1.5; }
+body { margin: 0; padding: 80px 0 0; color: #222831; font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif; line-height: 1.5; }
 
 body.overflow--hidden { /* when primary navigation is visible, the content in the background won't scroll */ overflow: hidden; }
 
@@ -1754,5 +1754,7 @@ body { display: -webkit-box; display: -ms-flexbox; display: flex; min-height: 10
 .feature__item, .archive__item, .archive__item-body, .archive__item-title, .archive__item-excerpt, .archive__item-teaser, .archive__item-teaser img { width: 100% !important; max-width: 100% !important; display: block; text-align: left; margin: 0; padding: 0; box-sizing: border-box; }
 
 .archive__item-title { text-overflow: unset; overflow: unset; white-space: normal; }
+
+.page__content { padding-top: 2rem; /* or 3rem/4rem if you want more space */ }
 
 /*# sourceMappingURL=main.css.map */
