@@ -8,28 +8,30 @@ intro:
   - excerpt: 'Nullam suscipit et nam, tellus velit pellentesque at malesuada, enim eaque. Quis nulla, netus tempor in diam gravida tincidunt, *proin faucibus* voluptate felis id sollicitudin. Centered with `type="center"`'
 feature_row:
   - image_path: assets/images/dashboards.png
-    alt: "placeholder image 1"
+    alt: "Dashboards content"
     title: "Dashboards"
-    excerpt: "This is some sample content that goes here with **Markdown** formatting."
+    excerpt: "Collection of random dashboards I have created for various purposes"
     url: "#test-link"
     btn_label: "Read More"
     btn_class: "btn--primary"
   - image_path: /assets/images/searches.png
-    alt: "placeholder image 2"
-    title: "Placeholder 2"
-    excerpt: "This is some sample content that goes here with **Markdown** formatting."
-    url: "#test-link"
-    btn_label: "Read More"
-    btn_class: "btn--primary"
-  - image_path: /assets/images/misc.png
-    title: "Placeholder 3"
-    excerpt: "This is some sample content that goes here with **Markdown** formatting."
+    alt: "Searches"
+    title: "Searches"
+    excerpt: "Random Splunk searches that dont currently fit into any of the dashboards"
     url: "#test-link"
     btn_label: "Read More"
     btn_class: "btn--primary"
   - image_path: /assets/images/api.png
-    title: "Placeholder 3"
-    excerpt: "This is some sample content that goes here with **Markdown** formatting."
+    alt: "API"
+    title: "API"
+    excerpt: "Some random API based scripts that are for various purposes"
+    url: "#test-link"
+    btn_label: "Read More"
+    btn_class: "btn--primary"
+  - image_path: /assets/images/misc.png
+    alt: "Miscellaneous"
+    title: "Miscellaneous"
+    excerpt: "Random Splunk content that doesnt fit the other categories"
     url: "#test-link"
     btn_label: "Read More"
     btn_class: "btn--primary"
