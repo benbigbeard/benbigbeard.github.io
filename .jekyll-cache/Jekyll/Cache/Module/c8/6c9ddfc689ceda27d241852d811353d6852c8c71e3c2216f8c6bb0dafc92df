@@ -1,4 +1,4 @@
-I"
+I"Ç
 
 <div class="masthead">
   <div class="masthead__inner-wrap">
@@ -36,6 +36,11 @@
                 
               >Blogs</a>
             </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
         
         <button class="greedy-nav__toggle hidden" type="button">
           <span class="visually-hidden">Toggle menu</span>

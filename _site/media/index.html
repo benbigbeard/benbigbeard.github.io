@@ -35,7 +35,7 @@
 
 
 
-  <meta property="article:published_time" content="2025-05-12T23:53:54+01:00">
+  <meta property="article:published_time" content="2025-05-13T00:00:01+01:00">
 
 
 
@@ -130,6 +130,11 @@
               >Blogs</a>
             </li></ul>
         
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
         <button class="greedy-nav__toggle hidden" type="button">
           <span class="visually-hidden">Toggle menu</span>
           <div class="navicon"></div>
@@ -155,7 +160,7 @@
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="Media">
     <meta itemprop="description" content="Photos, videos, and press highlights from past work and projects.">
-    <meta itemprop="datePublished" content="2025-05-12T23:53:54+01:00">
+    <meta itemprop="datePublished" content="2025-05-13T00:00:01+01:00">
     
 
     <div class="page__inner-wrap">
@@ -187,7 +192,7 @@
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2025-05-12T23:53:54+01:00">May 12, 2025</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2025-05-13T00:00:01+01:00">May 13, 2025</time></p>
 
       </footer>
 
@@ -217,6 +222,17 @@
     </div>
 
     
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
 
     <div id="footer" class="page__footer">
       <footer>
@@ -245,6 +261,10 @@
 
 
 
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
 
 
 
