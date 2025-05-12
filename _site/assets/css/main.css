@@ -1769,4 +1769,9 @@ body { display: -webkit-box; display: -ms-flexbox; display: flex; min-height: 10
 /* Hover state for clarity */
 .sidebar ul.nav__items a:hover { color: #007acc; background-color: #f0f0f0; border-radius: 4px; padding-left: 0.5rem; }
 
+/* Fix sidebar to the left */
+.sidebar { position: fixed; top: 4.5rem; /* Height of your sticky header */ }
+
+.page__footer { position: fixed; bottom: 0; left: 0; width: 100%; z-index: 999; border-top: 1px solid #eaeaea; padding: 0.5rem 1rem; }
+
 /*# sourceMappingURL=main.css.map */

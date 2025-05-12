@@ -96,3 +96,19 @@ search: false
   border-radius: 4px;
   padding-left: 0.5rem;
 }
+
+/* Fix sidebar to the left */
+.sidebar {
+  position: fixed;
+  top: 4.5rem; /* Height of your sticky header */
+}
+
+.page__footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  border-top: 1px solid #eaeaea;
+  padding: 0.5rem 1rem;
+}
