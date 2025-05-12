@@ -1,0 +1,36 @@
+I"ô
+<div class="feature__wrapper">
+
+  
+    <div class="feature__item">
+      <div class="archive__item">
+        
+          <div class="archive__item-teaser">
+            <img src="/assets/images/dashboards.png" alt="Dashboards" />
+            
+          </div>
+        
+
+        <div class="archive__item-body">
+          
+            <h2 class="archive__item-title">Splunk Dashboards</h2>
+          
+
+          
+            <div class="archive__item-excerpt">
+              <p>Dashboards built for demos and real-world use.</p>
+
+            </div>
+          
+
+          
+            <p><a href="https://github.com/benbigbeard/splunk/tree/master/Dashboards" class="btn btn--primary">View</a></p>
+          
+        </div>
+      </div>
+    </div>
+  
+
+</div>
+
+:ET

@@ -29,10 +29,10 @@ var store = [{
         "url": "/pages/ai_readiness/",
         "teaser": null
       },{
-        "title": "Contact",
-        "excerpt":"📬 Feel free to reach out:      GitHub: @benbigbeard   LinkedIn: Ben Lovley   Email: ben@splunk.com  ","categories": [],
+        "title": "Blogs",
+        "excerpt":"                                                                                                                     Splunk                                                    Dashboards built for demos and real-world use.                                                   View                                        ","categories": [],
         "tags": [],
-        "url": "/contact/",
+        "url": "/blogs/",
         "teaser": null
       },{
         "title": "Media",
