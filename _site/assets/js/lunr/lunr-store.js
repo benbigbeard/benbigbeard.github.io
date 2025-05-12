@@ -58,10 +58,4 @@ var store = [{
         "tags": [],
         "url": "/2025/05/10/new-site-wip.html",
         "teaser": null
-      },{
-        "title": "Temp Post",
-        "excerpt":"Temporary post to work on page spacing  ","categories": [],
-        "tags": [],
-        "url": "/2025/05/12/temp-post.html",
-        "teaser": null
       }]
