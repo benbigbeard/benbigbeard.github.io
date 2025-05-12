@@ -1772,6 +1772,7 @@ body { display: -webkit-box; display: -ms-flexbox; display: flex; min-height: 10
 /* Fix sidebar to the left */
 .sidebar { position: fixed; top: 4.5rem; /* Height of your sticky header */ }
 
+/* footer config */
 .page__footer { position: fixed; bottom: 0; left: 0; width: 100%; z-index: 999; border-top: 1px solid #eaeaea; padding: 0.5rem 1rem; }
 
 /*# sourceMappingURL=main.css.map */
