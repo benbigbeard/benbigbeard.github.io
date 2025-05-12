@@ -61,3 +61,10 @@ search: false
 .page__content {
   padding-top: 2rem; /* or 3rem/4rem if you want more space */
 }
+
+/* Space between recent posts on the homepage */
+.entries-list > .list__item {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eaeaea;
+}
