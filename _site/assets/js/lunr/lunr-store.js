@@ -6,7 +6,7 @@ var store = [{
         "teaser": null
       },{
         "title": "Activities",
-        "excerpt":"                                                                                                                     AI Readiness Check                                                    Interactive form to measure AI readiness.                                                   Access                                                                                                                                                            Placeholder 3                                                    This is some sample content that goes here with Markdown formatting.                                                   Read More                                        ","categories": [],
+        "excerpt":"                                                                                                                     AI Readiness Check                                                    Interactive form to measure AI readiness.                                                   Access                                                                                                                                                    Placeholder 3                                                    This is some sample content that goes here with Markdown formatting.                                                   Read More                                        ","categories": [],
         "tags": [],
         "url": "/docs/activities/",
         "teaser": null

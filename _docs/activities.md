@@ -14,7 +14,6 @@ feature_row:
     url: "/pages/ai_readiness"
     btn_label: "Access"
     btn_class: "btn--primary"
-feature_row2:
   - image_path: https://cdn-icons-png.flaticon.com/512/5968/5968267.png
     title: "Placeholder 3"
     excerpt: "This is some sample content that goes here with **Markdown** formatting."
@@ -24,4 +23,3 @@ feature_row2:
 ---
 
 {% include feature_row %}
-{% include feature_row id="feature_row2" %}
