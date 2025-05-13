@@ -1781,4 +1781,15 @@ body { display: -webkit-box; display: -ms-flexbox; display: flex; min-height: 10
 /* Mobile: Let sidebar return to default and avoid overlap */
 @media (max-width: 1023px) { .sidebar { position: static !important; width: 100%; } .page__content { margin-left: 0 !important; } }
 
+/* NEW CONTENT */
+.feature__item { display: flex; flex-direction: column; height: 100%; }
+
+.archive__item { display: flex; flex-direction: column; height: 100%; }
+
+.archive__item-body { display: flex; flex-direction: column; flex-grow: 1; }
+
+.archive__item-excerpt { flex-grow: 1; }
+
+.archive__item-body .btn { margin-top: auto; }
+
 /*# sourceMappingURL=main.css.map */

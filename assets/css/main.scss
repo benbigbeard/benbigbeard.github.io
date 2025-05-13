@@ -138,3 +138,30 @@ search: false
     margin-left: 0 !important;
   }
 }
+
+/* NEW CONTENT */
+.feature__item {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.archive__item {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.archive__item-body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.archive__item-excerpt {
+  flex-grow: 1;
+}
+
+.archive__item-body .btn {
+  margin-top: auto;
+}
