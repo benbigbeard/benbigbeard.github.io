@@ -113,3 +113,28 @@ search: false
   border-top: 1px solid #eaeaea;
   padding: 0.5rem 1rem;
 }
+
+/* Desktop: Fix the sidebar and push content right */
+@media (min-width: 1024px) {
+  .sidebar {
+    position: fixed;
+    top: 4.5rem; /* matches masthead height */
+    width: 260px;
+  }
+
+  .page__content {
+    margin-left: 280px;
+  }
+}
+
+/* Mobile: Let sidebar return to default and avoid overlap */
+@media (max-width: 1023px) {
+  .sidebar {
+    position: static !important;
+    width: 100%;
+  }
+
+  .page__content {
+    margin-left: 0 !important;
+  }
+}
