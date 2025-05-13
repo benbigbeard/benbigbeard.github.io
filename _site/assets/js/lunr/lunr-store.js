@@ -18,7 +18,7 @@ var store = [{
         "teaser": null
       },{
         "title": "About",
-        "excerpt":"Hi, I’m Ben — a technologist who enjoys building Splunk apps, modding RC vehicles, 3D printing, and sharing knowledge through public speaking.   This site is a central home for the things I build, the ideas I explore, and the lessons I learn along the way.  ","categories": [],
+        "excerpt":"Hi, I’m Ben. I like to build things, break things (on purpose or otherwise), and understand how they work. This site is where I share the projects I’m working on, what I’ve learned along the way, and a few thoughts that don’t always fit neatly into a slide deck. If...","categories": [],
         "tags": [],
         "url": "/about/",
         "teaser": null
