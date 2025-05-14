@@ -10,10 +10,10 @@ I've delivered talks across the UK public sector and tech communities over the l
   ![CIO Chapter](https://media.licdn.com/dms/image/v2/D4E22AQGjtdcSqOM2dg/feedshare-shrink_800/B4EZSxRmpJGgAg-/0/1738140970508?e=1750291200&v=beta&t=oDL-YaZt2A2YphUiwCpXBoiTWoVv2agenaEsvJBNVmY)
 
 - **CAF Compliance Without the Chaos** - Annual Government Cyber Security Conference, Feb 2025  
-  ![CAF Talk](https://your-image-url.com/caf-talk.jpg)
+  ![CAF Talk](/assets/images/cio_chapter.png)
 
 - **AI: Foundations and Truths** - UK Tech Day, Jan 2025  
-  ![AI Talk](https://your-image-url.com/ai-foundations.jpg)
+  ![AI Talk](https://media.licdn.com/dms/image/v2/D4E22AQGHiLMtD8F6vw/feedshare-shrink_2048_1536/feedshare-shrink_2048_1536/0/1732822341744?e=1750291200&v=beta&t=g3mAVq7wTlkk4LOzFsdEecMsfK0g8dusvaHnUzdIsZk)
 
 - **Security Trends and Evidence Based Training** - .conf Go, London, Nov 2024  
-  ![.conf Go](https://your-image-url.com/conf-go.jpg)
+  ![.conf Go](https://media.licdn.com/dms/image/v2/D4E22AQH_L-mpp0VKAQ/feedshare-shrink_800/feedshare-shrink_800/0/1723811515284?e=1750291200&v=beta&t=8NGb-k9KVhUVow_19TxWFswNqMse__zDClzIlrflbmM)
