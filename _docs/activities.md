@@ -12,19 +12,19 @@ feature_row:
     title: "AI Readiness Check"
     excerpt: "Interactive form to measure AI readiness."
     url: "/pages/ai_readiness"
-    btn_label: "Access"
+    btn_label: "Start"
     btn_class: "btn--primary"
   - image_path: https://cdn-icons-png.flaticon.com/512/5968/5968267.png
     title: "Algo Fit"
     excerpt: "This is some sample content that goes here with **Markdown** formatting."
     url: "/activities/algo_game/"
-    btn_label: "Read More"
+    btn_label: "Start"
     btn_class: "btn--primary"
   - image_path: https://cdn-icons-png.flaticon.com/512/5968/5968267.png
     title: "Good or Bad Fit"
     excerpt: "This is some sample content that goes here with **Markdown** formatting."
     url: "/activities/good_bad_fit/"
-    btn_label: "Read More"
+    btn_label: "Start"
     btn_class: "btn--primary"
 ---
 
