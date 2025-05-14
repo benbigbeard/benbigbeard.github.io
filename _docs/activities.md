@@ -20,6 +20,12 @@ feature_row:
     url: "/activities/algo_game/"
     btn_label: "Read More"
     btn_class: "btn--primary"
+  - image_path: https://cdn-icons-png.flaticon.com/512/5968/5968267.png
+    title: "Good or Bad Fit"
+    excerpt: "This is some sample content that goes here with **Markdown** formatting."
+    url: "/activities/good_bad_fit/"
+    btn_label: "Read More"
+    btn_class: "btn--primary"
 ---
 
 {% include feature_row %}
