@@ -15,9 +15,9 @@ feature_row:
     btn_label: "Access"
     btn_class: "btn--primary"
   - image_path: https://cdn-icons-png.flaticon.com/512/5968/5968267.png
-    title: "Placeholder 3"
+    title: "Algo Fit"
     excerpt: "This is some sample content that goes here with **Markdown** formatting."
-    url: "#test-link"
+    url: "/assets/activities/algo_game/index.html"
     btn_label: "Read More"
     btn_class: "btn--primary"
 ---

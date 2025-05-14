@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ML Algorithm Sorting Game</title>
+  <style>
+    /* CSS Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #ffe6eb; /* Soft pink background */
+    }
+
+    .game-container {
+      display: flex;
+      flex-direction: row;
+      width: 90%;
+      height: 80vh; /* Fixed height for consistency */
+      margin: 20px 0;
+    }
+
+    .left-panel {
+      width: 30%;
+      border: 2px solid #f04e98; /* Bold pink border */
+      padding: 10px;
+      background: #fce4f6; /* Light pink background */
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* 2 equal columns */
+      grid-gap: 15px; /* Add spacing between grid items */
+      align-items: center;
+      justify-items: center;
+    }
+
+    .right-panel {
+      width: 70%;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: stretch; /* Ensure columns match the left panel's height */
+    }
+
+    .table-column {
+      flex: 1;
+      max-width: 30%;
+      height: calc(100% - 20px); /* Align column height with left panel */
+      border: 2px dashed #ee4266; /* Strong pink-red for drop zone borders */
+      background: #fff5f7; /* Light pink for drop zones */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 30px; /* Larger spacing between tiles in the columns */
+      padding: 10px;
+    }
+
+    .table-column h3 {
+      background: #ee4266;
+      color: white;
+      width: 100%;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 16px;
+      font-weight: bold;
+      border-bottom: 2px solid #f04e98;
+      margin-bottom: 15px;
+    }
+
+    .square {
+      width: 100px;
+      height: 100px;
+      perspective: 1000px; /* Enable 3D flipping */
+      background: transparent; /* Remove background */
+      cursor: pointer; /* Show pointer to indicate interactivity */
+    }
+
+    .square-inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+    }
+
+    .square-front,
+.square-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border: 2px solid #6a4c93; /* Deep purple border for tiles */
+  background: #ffe6eb; /* Light pink for tile faces */
+}
+
+.square-front {
+  display: flex; /* Make the container a flexbox */
+  justify-content: center; /* Horizontally center the content */
+  align-items: center; /* Vertically center the content */
+}
+
+.square-front img {
+  width: 80%; /* Keep the image responsive */
+  height: auto; /* Maintain the aspect ratio */
+  pointer-events: none; /* Prevent mouse events on the image */
+  user-select: none; /* Prevent text/image selection */
+}
+
+.square-back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f6c177; /* Soft yellow-orange for back face */
+  transform: rotateY(180deg);
+  font-size: 12px;
+  padding: 10px;
+  text-align: center;
+}
+
+
+    .flipped .square-inner {
+      transform: rotateY(180deg);
+    }
+
+    .locked {
+      opacity: 0.6; /* Make locked tiles dim */
+      cursor: not-allowed; /* Show locked cursor */
+    }
+
+    .dragging {
+      opacity: 0.5; /* Dragging visual cue */
+    }
+
+    .drag-over {
+      background-color: #f6c177; /* Highlight drop zone */
+    }
+
+    #controls {
+      margin-top: 20px;
+    }
+
+    button {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin: 0 10px;
+  cursor: pointer;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.reset-button {
+  background: #ff0000; /* Red for reset */
+}
+
+.reset-button:hover {
+  background: #cc0000; /* Darker red on hover */
+}
+
+.submit-button {
+  background: #00cc00; /* Green for submit */
+}
+
+.submit-button:hover {
+  background: #009900; /* Darker green on hover */
+}
+  </style>
+</head>
+<body>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ML Algorithm Sorting Game</title>
+  <style>
+    /* CSS Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #ffe6eb; /* Soft pink background */
+    }
+
+    .game-container {
+      display: flex;
+      flex-direction: row;
+      width: 90%;
+      height: 80vh; /* Fixed height for consistency */
+      margin: 20px 0;
+    }
+
+    .left-panel {
+      width: 30%;
+      border: 2px solid #f04e98; /* Bold pink border */
+      padding: 10px;
+      background: #fce4f6; /* Light pink background */
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* 2 equal columns */
+      grid-gap: 15px; /* Add spacing between grid items */
+      align-items: center;
+      justify-items: center;
+    }
+
+    .left-panel h2 {
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 15px;
+  color: #f04e98; /* Bold pink to match your design */
+}
+
+    .left-panel-heading {
+  grid-column: span 2; /* Makes the heading span both columns */
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #f04e98; /* Bold pink to match the design */
+}
+
+    .right-panel {
+      width: 70%;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: stretch; /* Ensure columns match the left panel's height */
+    }
+
+    .table-column {
+      flex: 1;
+      max-width: 30%;
+      height: calc(100% - 20px); /* Align column height with left panel */
+      border: 2px dashed #ee4266; /* Strong pink-red for drop zone borders */
+      background: #fff5f7; /* Light pink for drop zones */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 30px; /* Larger spacing between tiles in the columns */
+      padding: 10px;
+    }
+
+    .table-column h3 {
+      background: #ee4266;
+      color: white;
+      width: 100%;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 16px;
+      font-weight: bold;
+      border-bottom: 2px solid #f04e98;
+      margin-bottom: 15px;
+    }
+
+    .square {
+      width: 100px;
+      height: 100px;
+      perspective: 1000px; /* Enable 3D flipping */
+      background: transparent; /* Remove background */
+      cursor: pointer; /* Show pointer to indicate interactivity */
+    }
+
+    .square-inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+    }
+
+    .square-front,
+.square-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border: 2px solid #6a4c93; /* Deep purple border for tiles */
+  background: #ffe6eb; /* Light pink for tile faces */
+}
+
+.square-front {
+  display: flex; /* Make the container a flexbox */
+  justify-content: center; /* Horizontally center the content */
+  align-items: center; /* Vertically center the content */
+}
+
+.square-front img {
+  width: 80%; /* Keep the image responsive */
+  height: auto; /* Maintain the aspect ratio */
+  pointer-events: none; /* Prevent mouse events on the image */
+  user-select: none; /* Prevent text/image selection */
+}
+
+.square-back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f6c177; /* Soft yellow-orange for back face */
+  transform: rotateY(180deg);
+  font-size: 12px;
+  padding: 10px;
+  text-align: center;
+}
+
+
+    .flipped .square-inner {
+      transform: rotateY(180deg);
+    }
+
+    .locked {
+      opacity: 0.6; /* Make locked tiles dim */
+      cursor: not-allowed; /* Show locked cursor */
+    }
+
+    .dragging {
+      opacity: 0.5; /* Dragging visual cue */
+    }
+
+    .drag-over {
+      background-color: #f6c177; /* Highlight drop zone */
+    }
+
+    #controls {
+      margin-top: 20px;
+    }
+
+    button {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin: 0 10px;
+  cursor: pointer;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.reset-button {
+  background: #ff0000; /* Red for reset */
+}
+
+.reset-button:hover {
+  background: #cc0000; /* Darker red on hover */
+}
+
+.submit-button {
+  background: #00cc00; /* Green for submit */
+}
+
+.submit-button:hover {
+  background: #009900; /* Darker green on hover */
+}
+  </style>
+</head>
+<body>
+  <h1>Drag the scenarios into the correct algorithm</h1>
+  <div class="game-container">
+    <!-- Left Panel -->
+    <div class="left-panel" id="left-panel">
+      <h2 class="left-panel-heading">Scenarios - click to flip</h2>
+      <div class="square" id="tile1" data-answer="regression" draggable="true" onclick="flipTile(this)">
+        <div class="square-inner">
+          <div class="square-front">
+            <img src="assets/tshirt.png" alt="T-shirt">
+          </div>
+          <div class="square-back">
+            Predict revenue of T-shirt sales following new release
+          </div>
+        </div>
+      </div>
+      <div class="square" id="tile2" data-answer="classification" draggable="true" onclick="flipTile(this)">
+        <div class="square-inner">
+          <div class="square-front">
+            <img src="assets/cat.png" alt="Cat">
+          </div>
+          <div class="square-back">
+            Group cats by their breed
+          </div>
+        </div>
+      </div>
+      <div class="square" id="tile3" data-answer="clustering" draggable="true" onclick="flipTile(this)">
+        <div class="square-inner">
+          <div class="square-front">
+            <img src="assets/data.png" alt="Data">
+          </div>
+          <div class="square-back">
+            Assign customers to groups based on their behavior
+          </div>
+        </div>
+      </div>
+      <div class="square" id="tile4" data-answer="regression" draggable="true" onclick="flipTile(this)">
+        <div class="square-inner">
+          <div class="square-front">
+            <img src="assets/house.png" alt="House">
+          </div>
+          <div class="square-back">
+            Predict house prices over the next couple of years
+          </div>
+        </div>
+      </div>
+      <div class="square" id="tile5" data-answer="classification" draggable="true" onclick="flipTile(this)">
+        <div class="square-inner">
+          <div class="square-front">
+            <img src="assets/spam.png" alt="Spam">
+          </div>
+          <div class="square-back">
+            Detect spam emails in users mailboxes
+          </div>
+        </div>
+      </div>
+      <div class="square" id="tile6" data-answer="clustering" draggable="true" onclick="flipTile(this)">
+        <div class="square-inner">
+          <div class="square-front">
+            <img src="assets/plants.png" alt="Plants">
+          </div>
+          <div class="square-back">
+            Group plants by species or features
+          </div>
+        </div>
+      </div>
+      <div class="square" id="tile7" data-answer="regression" draggable="true" onclick="flipTile(this)">
+        <div class="square-inner">
+          <div class="square-front">
+            <img src="assets/sales.png" alt="Sales">
+          </div>
+          <div class="square-back">
+            Predict future sales trends of online sales
+          </div>
+        </div>
+      </div>
+      <div class="square" id="tile8" data-answer="classification" draggable="true" onclick="flipTile(this)">
+        <div class="square-inner">
+          <div class="square-front">
+            <img src="assets/weather.png" alt="Weather">
+          </div>
+          <div class="square-back">
+            Classify current weather conditions
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Panel -->
+    <div class="right-panel">
+      <div class="table-column" id="regression-column" data-type="regression">
+        <h3>Regression</h3>
+      </div>
+      <div class="table-column" id="classification-column" data-type="classification">
+        <h3>Classification</h3>
+      </div>
+      <div class="table-column" id="clustering-column" data-type="clustering">
+        <h3>Clustering</h3>
+      </div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+<div id="controls">
+  <button id="submit-button" class="submit-button">Submit</button>
+  <button id="clear-button" class="reset-button">Reset</button>
+</div>
+
+  <script>
+    const squares = document.querySelectorAll('.square');
+    const columns = document.querySelectorAll('.table-column');
+    const resetButton = document.getElementById('clear-button');
+    const submitButton = document.getElementById('submit-button');
+
+    squares.forEach(square => {
+      square.addEventListener('dragstart', (e) => {
+        if (square.classList.contains('locked')) {
+          e.preventDefault();
+          return;
+        }
+        e.dataTransfer.setData('text/plain', e.target.id);
+      });
+    });
+
+    columns.forEach(column => {
+      column.addEventListener('dragover', (e) => e.preventDefault());
+      column.addEventListener('drop', (e) => {
+        const id = e.dataTransfer.getData('text/plain');
+        const dragged = document.getElementById(id);
+        if (!dragged.classList.contains('locked')) {
+          column.appendChild(dragged);
+          dragged.classList.add('locked');
+        }
+      });
+    });
+
+    submitButton.addEventListener('click', () => {
+      let correct = 0;
+      columns.forEach(column => {
+        const answerType = column.dataset.type;
+        const child = column.querySelector(`[data-answer="${answerType}"]`);
+        if (child) correct++;
+      });
+      alert(`You got ${correct} out of ${squares.length} correct!`);
+    });
+
+    resetButton.addEventListener('click', () => {
+      const leftPanel = document.getElementById('left-panel');
+      squares.forEach(square => {
+        leftPanel.appendChild(square);
+        square.classList.remove('locked');
+        square.classList.remove('flipped'); // Ensure tiles are picture side up
+      });
+    });
+
+    function flipTile(tile) {
+      if (!tile.classList.contains('locked')) {
+        tile.classList.toggle('flipped');
+      }
+    }
+  </script>
+</body>
+</html>
