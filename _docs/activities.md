@@ -16,13 +16,13 @@ feature_row:
     btn_class: "btn--primary"
   - image_path: https://cdn-icons-png.flaticon.com/512/5968/5968267.png
     title: "Algo Fit"
-    excerpt: "This is some sample content that goes here with **Markdown** formatting."
+    excerpt: "A simple exercise to understand different algorithms you typically see or hear about"
     url: "/activities/algo_game/"
     btn_label: "Start"
     btn_class: "btn--primary"
   - image_path: https://cdn-icons-png.flaticon.com/512/5968/5968267.png
     title: "Good or Bad Fit"
-    excerpt: "This is some sample content that goes here with **Markdown** formatting."
+    excerpt: "Hands-on exercise to test your undertstanding of if AI is suitable for your use-case"
     url: "/activities/good_bad_fit/"
     btn_label: "Start"
     btn_class: "btn--primary"
