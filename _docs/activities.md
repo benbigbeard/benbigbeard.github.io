@@ -17,7 +17,7 @@ feature_row:
   - image_path: https://cdn-icons-png.flaticon.com/512/5968/5968267.png
     title: "Algo Fit"
     excerpt: "This is some sample content that goes here with **Markdown** formatting."
-    url: "/assets/activities/algo_game/index.html"
+    url: "/activities/algo_game/"
     btn_label: "Read More"
     btn_class: "btn--primary"
 ---
