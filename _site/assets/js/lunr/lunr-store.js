@@ -48,7 +48,7 @@ var store = [{
         "teaser": null
       },{
         "title": "Talks",
-        "excerpt":"I’ve delivered talks across the UK public sector and tech communities:      “Data-Driven Decision Making: Before the Magic Happens” — CIO Chapter UK, May 2025   “CAF Compliance Without the Chaos” — UK Government Security Summit, 2024   Splunk Global SE Enablement — Internal technical demo showcases  ","categories": [],
+        "excerpt":"I’ve delivered talks across the UK public sector and tech communities over the last 18 months: Data-Driven Decision Making: Before the Magic Happens — CIO Chapter UK, May 2025 CAF Compliance Without the Chaos - Annual Government Cyber Security Conference, Feb 2025 AI: Foundations and Truths - UK Tech Day,...","categories": [],
         "tags": [],
         "url": "/talks/",
         "teaser": null

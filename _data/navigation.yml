@@ -15,5 +15,7 @@ docs:
         url: https://makerworld.com/en/@benlovley/upload
       - title: "Activities"
         url: /docs/activities/
+      - title: "GitHub"
+        url: https://github.com/benbigbeard
       - title: "Splunk"
         url: /docs/splunk/
