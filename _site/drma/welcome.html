@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Digital Resilience Maturity Assessment — Welcome</title>
+  <link rel="stylesheet" href="drma.css" />
+<style>
+  /* Carried over verbatim from Splunk to match appearance */
+  .dashboard-header {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    height: 6px !important;
+    min-height: 6px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  /* Center the CTA */
+  .drma-cta {
+    display: flex;
+    justify-content: center;
+    margin: 32px 0 8px;
+  }
+
+  /* Green start button - override any existing button styles */
+  .drma-cta .drma-btn--start {
+    background: linear-gradient(180deg, #2fe57d, #16b75d) !important;
+    border-color: rgba(99, 255, 170, 0.85) !important;
+    color: #02160a !important;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2),
+                0 10px 28px rgba(0, 0, 0, 0.5);
+  }
+
+  .drma-cta .drma-btn--start:hover {
+    filter: brightness(1.05);
+    transform: translateY(-1px);
+  }
+</style>
+</head>
+<body>
+  <div class="drma-nav">
+    <span class="drma-nav__title">DRMA</span>
+    <a href="welcome.html" class="drma-nav__link drma-nav__link--active">Welcome</a>
+    <a href="content.html" class="drma-nav__link">Overview</a>
+    <a href="assessment.html" class="drma-nav__link">Assessment</a>
+  </div>
+
+  <div class="drma-theme drma-theme--dark drma-welcome">
+    <!-- Slim hero (no box frame) -->
+    <section class="drma-hero drma-hero--slim drma-hero--frameless">
+      <h1>Digital Resilience Maturity Assessment</h1>
+      <p class="drma-subtitle">Assess, visualise, and improve your organisation’s digital resilience across domains and maturity levels.</p>
+    </section>
+
+    <!-- One clean article container -->
+    <article class="drma-article">
+      <section>
+        <div style="flex:1 1 720px; min-width:360px;">
+          <h2>What is Digital Resilience?</h2>
+
+          <p>
+            Digital resilience is about more than surviving disruption — it is about continuing to deliver outcomes in the face of it. In today’s environment, organisations are challenged not only by cyberattacks, but also by system outages, supply chain shocks, and rapid changes in customer demand. True resilience requires the ability to anticipate these events, respond effectively when they occur, and adapt quickly so the business emerges stronger.
+          </p>
+
+          <p>Industry leaders frame this in similar ways:</p>
+
+          <!-- Side-by-side tips -->
+          <div style="display:flex; gap:16px; flex-wrap:wrap; margin:16px 0;">
+            <div class="drma-tip" style="flex:1 1 300px;">
+              <h3 class="drma-tip-title">Splunk</h3>
+              <p>
+                Describes digital resilience as the ability for organisations to 
+                <em>withstand, adapt to, and rapidly recover from digital disruptions</em>, 
+                ensuring continuity of services while maintaining trust and compliance.
+              </p>
+            </div>
+
+            <div class="drma-tip" style="flex:1 1 300px;">
+              <h3 class="drma-tip-title">World Economic Forum</h3>
+              <p>
+                Defines it as <em>an organisation’s capacity to anticipate, withstand, recover from, and evolve 
+                to address the impact of cyber incidents and digital shocks</em>.
+              </p>
+            </div>
+          </div>
+
+          <p>
+            Together, these perspectives highlight that digital resilience is not a single control or tool, but a combination of technical, organisational, and human capabilities. Measuring and improving resilience across all of these dimensions is essential for long-term confidence and competitiveness.
+          </p>
+        </div>
+      </section>
+
+      <hr class="drma-rule" />
+
+      <!-- 8 Domains (WEF “compass” style) -->
+      <section>
+        <div class="drma-domains-row" style="display:flex; gap:24px; align-items:stretch; flex-wrap:wrap;">
+          <!-- Left: text -->
+          <div class="drma-domains-text" style="flex:1 1 360px; min-width:320px;">
+            <h2>The 8 Domains of Digital Resilience</h2>
+            <p class="drma-intro">Digital resilience is the ability to continue delivering outcomes when disruption occurs — whether from a cyberattack, system failure, or external shock. It is not a single control but a balanced set of qualities that determine how well an organisation can withstand, adapt, and recover.</p>
+            <p>The eight domains were chosen to cover the full spectrum of resilience. Some focus on the <strong>technical foundations</strong> of keeping systems available, performant, secure, and scalable. Others reflect the <strong>organisational capabilities</strong> that sustain resilience — efficiency, transparency, and adaptability. Finally, resilience depends on the <strong>human dimension</strong> — how intuitive systems are to use and how easily teams can operate them under pressure.</p>
+            <p>Measuring across all eight provides a clear picture of current strengths and gaps. This enables leaders to target investment where it delivers the greatest impact and to build resilience that is both robust in a crisis and sustainable over time.</p>
+          </div>
+
+          <!-- Right: compass -->
+          <div style="flex:1 1 540px; min-width:360px; display:flex; justify-content:center;">
+            <!-- DRMA Compass (tight, even, smaller) -->
+            <div class="drma-compass">
+              <svg viewBox="0 0 600 600" width="900" height="800" class="drma-compass-svg">
+
+                <svg width="600" height="600">
+
+                  <!-- Circle with 4 gaps -->
+                  <circle 
+                    cx="300" cy="300" r="180" 
+                    fill="none" 
+                    class="ring"
+                    stroke="blue"
+                    stroke-width="10"
+                    stroke-dasharray="230 52.5"
+                    stroke-dashoffset="115"
+                    transform="rotate(-45 300 300)"
+                  />
+
+                  <!-- Compass letters (fine-tuned positions) -->
+                  <text x="300" y="130" text-anchor="middle" font-size="30" font-family="sans-serif" fill="#B0B0B0">N</text>
+                  <text x="480" y="310" text-anchor="middle" font-size="30" font-family="sans-serif" fill="#B0B0B0">E</text>
+                  <text x="120" y="310" text-anchor="middle" font-size="30" font-family="sans-serif" fill="#B0B0B0">W</text>
+                  <text x="300" y="490" text-anchor="middle" font-size="30" font-family="sans-serif" fill="#B0B0B0">S</text>
+
+                  <g class="needle" transform="translate(300 300)">
+                    <g transform="rotate(0)">
+                      <g fill="#B0B0B0" stroke="#B0B0B0" stroke-width="1">
+                        <!-- top hand -->
+                        <polygon points="-6,0 6,0 0,-80"/>
+                        <!-- bottom hand -->
+                        <polygon points="-6,0 6,0 0,80"/>
+                        <!-- Left needle -->
+                        <polygon points="0,-6 0,6 -80,0"/>
+                        <!-- Right needle -->
+                        <polygon points="0,-6 0,6 80,0"/>
+
+                        <!-- Diagonals (shorter) -->
+                        <polygon points="-4,0 4,0 0,-60" transform="rotate(45)"/>
+                        <polygon points="-4,0 4,0 0,-60" transform="rotate(135)"/>
+                        <polygon points="-4,0 4,0 0,-60" transform="rotate(225)"/>
+                        <polygon points="-4,0 4,0 0,-60" transform="rotate(315)"/>
+                      </g>
+
+                      <!-- hub -->
+                      <circle cx="0" cy="0" r="8" class="needle-hub"/>
+                    </g>
+                  </g>
+
+                  <svg width="600" height="600">
+                    <g transform="translate(300 300)">
+
+                      <!-- Major notches (every 45°) -->
+                      <g stroke="white" stroke-width="2">
+                        <g transform="rotate(0)"><line x1="0" y1="-220" x2="0" y2="-205"/></g>
+                        <g transform="rotate(45)"><line x1="0" y1="-220" x2="0" y2="-205"/></g>
+                        <g transform="rotate(90)"><line x1="0" y1="-220" x2="0" y2="-205"/></g>
+                        <g transform="rotate(135)"><line x1="0" y1="-220" x2="0" y2="-205"/></g>
+                        <g transform="rotate(180)"><line x1="0" y1="-220" x2="0" y2="-205"/></g>
+                        <g transform="rotate(225)"><line x1="0" y1="-220" x2="0" y2="-205"/></g>
+                        <g transform="rotate(270)"><line x1="0" y1="-220" x2="0" y2="-205"/></g>
+                        <g transform="rotate(315)"><line x1="0" y1="-220" x2="0" y2="-205"/></g>
+                      </g>
+
+                      <!-- Minor notches (every 7.5°, skipping multiples of 45°) -->
+                      <g stroke="white" stroke-width="1">
+                        <!-- Between 0° and 45° -->
+                        <g transform="rotate(7.5)"><line x1="0" y1="-220" x2="0" y2="-212"/></g>
+                        <g transform="rotate(15)"><line x1="0" y1="-220" x2="0" y2="-212"/></g>
+                        <g transform="rotate(22.5)"><line x1="0" y1="-220" x2="0" y2="-212"/></g>
+                        <g transform="rotate(30)"><line x1="0" y1="-220" x2="0" y2="-212"/></g>
+                        <g transform="rotate(37.5)"><line x1="0" y1="-220" x2="0" y2="-212"/></g>
+                        <!-- Between 45° and 90° -->
+                        <g transform="rotate(52.5)"><line x1="0" y1="-220" x2="0" y2="-212"/></g>
+                        <g transform="rotate(60)"><line x1="0" y1="-220" x2="0" y2="-212"/></g>
+                        <g transform="rotate(67.5)"><line x1="0" y1="-220" x2="0" y2="-212"/></g>
+                        <g transform="rotate(75)"><line x1="0" y1="-220" x2="0" y2="-212"/></g>
+                        <g transform="rotate(82.5)"><line x1="0" y1="-220" x2="0" y2="-212"/></g>
+                        <!-- Between 90° and 135° -->
+                        <g transform="rotate(97.5)"><line x1="0" y1="-220" x2="0" y2="-212"/></g>
+                        <g transform="rotate(105)"><line x1="0" y1="-220" x2="0" y2="-212"/></g>
+                        <g transform="rotate(112.5)"><line x1="0" y1="-220" x2="0" y2="-212"/></g>
+                        <g transform="rotate(120)"><line x1="0" y1="-220" x2="0" y2="-212"/></g>
+                        <g transform="rotate(127.5)"><line x1="0" y1="-220" x2="0" y2="-212"/></g>
+                        <!-- Between 135° and 180° -->
+                        <g transform="rotate(142.5)"><line x1="0" y1="-220" x2="0" y2="-212"/></g>
+                        <g transform="rotate(150)"><line x1="0" y1="-220" x2="0" y2="-212"/></g>
+                        <g transform="rotate(157.5)"><line x1="0" y1="-220" x2="0" y2="-212"/></g>
+                        <g transform="rotate(165)"><line x1="0" y1="-220" x2="0" y2="-212"/></g>
+                        <g transform="rotate(172.5)"><line x1="0" y1="-220" x2="0" y2="-212"/></g>
+
+                        <!-- Between 180° and 225° -->
+                        <g transform="rotate(187.5)"><line x1="0" y1="-220" x2="0" y2="-212"/></g>
+                        <g transform="rotate(195)"><line x1="0" y1="-220" x2="0" y2="-212"/></g>
+                        <g transform="rotate(202.5)"><line x1="0" y1="-220" x2="0" y2="-212"/></g>
+                        <g transform="rotate(210)"><line x1="0" y1="-220" x2="0" y2="-212"/></g>
+                        <g transform="rotate(217.5)"><line x1="0" y1="-220" x2="0" y2="-212"/></g>
+
+                        <!-- Between 225° and 270° -->
+                        <g transform="rotate(232.5)"><line x1="0" y1="-220" x2="0" y2="-212"/></g>
+                        <g transform="rotate(240)"><line x1="0" y1="-220" x2="0" y2="-212"/></g>
+                        <g transform="rotate(247.5)"><line x1="0" y1="-220" x2="0" y2="-212"/></g>
+                        <g transform="rotate(255)"><line x1="0" y1="-220" x2="0" y2="-212"/></g>
+                        <g transform="rotate(262.5)"><line x1="0" y1="-220" x2="0" y2="-212"/></g>
+
+                        <!-- Between 270° and 315° -->
+                        <g transform="rotate(277.5)"><line x1="0" y1="-220" x2="0" y2="-212"/></g>
+                        <g transform="rotate(285)"><line x1="0" y1="-220" x2="0" y2="-212"/></g>
+                        <g transform="rotate(292.5)"><line x1="0" y1="-220" x2="0" y2="-212"/></g>
+                        <g transform="rotate(300)"><line x1="0" y1="-220" x2="0" y2="-212"/></g>
+                        <g transform="rotate(307.5)"><line x1="0" y1="-220" x2="0" y2="-212"/></g>
+
+                        <!-- Between 315° and 360° -->
+                        <g transform="rotate(322.5)"><line x1="0" y1="-220" x2="0" y2="-212"/></g>
+                        <g transform="rotate(330)"><line x1="0" y1="-220" x2="0" y2="-212"/></g>
+                        <g transform="rotate(337.5)"><line x1="0" y1="-220" x2="0" y2="-212"/></g>
+                        <g transform="rotate(345)"><line x1="0" y1="-220" x2="0" y2="-212"/></g>
+                        <g transform="rotate(352.5)"><line x1="0" y1="-220" x2="0" y2="-212"/></g>
+                      </g>
+
+                    </g>
+                  </svg>
+
+                </svg>
+
+                <!-- Circle -->
+                <circle cx="300" cy="300" r="220" class="ring" />
+
+                <!-- Notches (short lines pointing inward) -->
+                <g class="notches" transform="translate(300 300)">
+                  <!-- Repeat every 45° -->
+                  <g transform="rotate(0)">
+                    <line x1="0" y1="-220" x2="0" y2="-205" class="notch" />
+                  </g>
+                  <g transform="rotate(45)">
+                    <line x1="0" y1="-220" x2="0" y2="-205" class="notch" />
+                  </g>
+                  <g transform="rotate(90)">
+                    <line x1="0" y1="-220" x2="0" y2="-205" class="notch" />
+                  </g>
+                  <g transform="rotate(135)">
+                    <line x1="0" y1="-220" x2="0" y2="-205" class="notch" />
+                  </g>
+                  <g transform="rotate(180)">
+                    <line x1="0" y1="-220" x2="0" y2="-205" class="notch" />
+                  </g>
+                  <g transform="rotate(225)">
+                    <line x1="0" y1="-220" x2="0" y2="-205" class="notch" />
+                  </g>
+                  <g transform="rotate(270)">
+                    <line x1="0" y1="-220" x2="0" y2="-205" class="notch" />
+                  </g>
+                  <g transform="rotate(315)">
+                    <line x1="0" y1="-220" x2="0" y2="-205" class="notch" />
+                  </g>
+                </g>
+
+                <!-- Labels: multi-line + padded away from ring -->
+                <g class="labels" transform="translate(300 300)">
+                  <!-- Top (0°) -->
+                  <g transform="rotate(0) translate(0,-270)">
+                    <text class="label" transform="rotate(0)">
+                      <tspan x="0">Availability,</tspan>
+                      <tspan x="0" dy="1.15em">Reliability &amp; Durability</tspan>
+                    </text>
+                  </g>
+
+                  <!-- 45° -->
+                  <g transform="rotate(45) translate(0,-290)">
+                    <text class="label" transform="rotate(-45)">
+                      <tspan x="0">Performance &amp;</tspan>
+                      <tspan x="0" dy="1.15em">Quality</tspan>
+                    </text>
+                  </g>
+
+                  <!-- Right (90°) -->
+                  <g transform="rotate(90) translate(0,-290)">
+                    <text class="label" transform="rotate(-90)">
+                      <tspan x="0">Security &amp;</tspan>
+                      <tspan x="0" dy="1.15em">Safety</tspan>
+                    </text>
+                  </g>
+
+                  <!-- 135° -->
+                  <g transform="rotate(135) translate(0,-270)">
+                    <text class="label" transform="rotate(-135)">
+                      <tspan x="0">Auditability</tspan>
+                    </text>
+                  </g>
+
+                  <!-- Bottom (180°) -->
+                  <g transform="rotate(180) translate(0,-270)">
+                    <text class="label" transform="rotate(-180)">
+                      <tspan x="0">Adaptability, Extensibility,</tspan>
+                      <tspan x="0" dy="1.15em">Agility &amp; Creativity</tspan>
+                    </text>
+                  </g>
+
+                  <!-- 225° -->
+                  <g transform="rotate(225) translate(0,-270)">
+                    <text class="label" transform="rotate(-225)">
+                      <tspan x="0">Capacity &amp;</tspan>
+                      <tspan x="0" dy="1.15em">Elasticity</tspan>
+                    </text>
+                  </g>
+
+                  <!-- Left (270°) -->
+                  <g transform="rotate(270) translate(0,-290)">
+                    <text class="label" transform="rotate(-270)">
+                      <tspan x="0">Efficiency &amp;</tspan>
+                      <tspan x="0" dy="1.15em">Cost</tspan>
+                    </text>
+                  </g>
+
+                  <!-- 315° -->
+                  <g transform="rotate(315) translate(0,-290)">
+                    <text class="label" transform="rotate(-315)">
+                      <tspan x="0">Usability &amp;</tspan>
+                      <tspan x="0" dy="1.15em">Operability</tspan>
+                    </text>
+                  </g>
+                </g>
+
+                <!-- Compass needle (two opposite triangular hands + hub) -->
+                <g transform="translate(300 300)">
+                  <g class="needle" transform="rotate(15)">
+                    <!-- TOP hand (outer) -->
+                    <polygon points="-6,0 6,0 0,-140" class="needle-hand"/>
+                    <!-- TOP hand (inner, darker & shorter) -->
+                    <polygon points="-4,0 4,0 0,-130" class="needle-hand-inner"/>
+
+                    <!-- BOTTOM hand (outer) -->
+                    <polygon points="-6,0 6,0 0,140" class="needle-hand"/>
+                    <!-- BOTTOM hand (inner, darker & shorter) -->
+                    <polygon points="-4,0 4,0 0,130" class="needle-hand-inner"/>
+
+                    <!-- Hub -->
+                    <circle cx="0" cy="0" r="8" class="needle-hub"/>
+                  </g>
+                </g>
+
+              </svg>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="drma-rule" />
+
+      <!-- 5 Levels (stacked blocks / journey) -->
+      <section>
+        <div style="display:flex; gap:24px; align-items:flex-start; flex-wrap:wrap;">
+          <!-- Left: curve -->
+          <div style="flex:1 1 520px; min-width:320px;">
+            <div class="drma-levels-curve" role="img" aria-label="Curved line rising from Level 1 to Level 5 with markers">
+              <svg viewBox="0 0 600 220" class="drma-levels-curve-svg" aria-hidden="true">
+                <defs>
+                  <!-- Stroke/fill to match your teal accents (same feel as radar) -->
+                  <linearGradient id="drmaCurveStroke" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%"  stop-color="#8de9ff" />
+                    <stop offset="100%" stop-color="#37e0ff" />
+                  </linearGradient>
+                  <linearGradient id="drmaDotFill" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%"  stop-color="#c7f4ff"/>
+                    <stop offset="100%" stop-color="#8de9ff"/>
+                  </linearGradient>
+                  <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="3" result="blur"/>
+                    <feMerge>
+                      <feMergeNode in="blur"/>
+                      <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                  </filter>
+                </defs>
+
+                <!-- subtle baseline -->
+                <line x1="40" y1="170" x2="560" y2="170" class="bl"/>
+
+                <!-- vertical maturity axis -->
+                <line x1="560" y1="170" x2="560" y2="40" class="bl"/>
+                <text x="580" y="105" text-anchor="middle" dominant-baseline="middle" style="fill:#b9cdea; font-size:14px; font-weight:600;" transform="rotate(90,580,105)">
+                  Maturity
+                </text>
+
+                <!-- smooth rising curve -->
+                <path class="curve" d="M40 150 C 80 150, 120 145, 160 140 S 240 115, 280 110 S 360 85,  400 80 S 480 65,  520 60" />
+
+                <!-- level ticks + labels along the base -->
+                <g class="ticks">
+                  <g transform="translate(40,170)"><line y2="8" class="tick"/><text y="24" text-anchor="middle">Ad Hoc</text></g>
+                  <g transform="translate(160,170)"><line y2="8" class="tick"/><text y="24" text-anchor="middle">Repeatable</text></g>
+                  <g transform="translate(280,170)"><line y2="8" class="tick"/><text y="24" text-anchor="middle">Defined</text></g>
+                  <g transform="translate(400,170)"><line y2="8" class="tick"/><text y="24" text-anchor="middle">Managed</text></g>
+                  <g transform="translate(520,170)"><line y2="8" class="tick"/><text y="24" text-anchor="middle">Optimised</text></g>
+                </g>
+
+                <!-- dots on the curve -->
+                <g class="dots" filter="url(#softGlow)">
+                  <circle cx="40"  cy="150" r="6" class="dot"/>
+                  <circle cx="160" cy="140" r="6" class="dot"/>
+                  <circle cx="280" cy="110" r="6" class="dot"/>
+                  <circle cx="400" cy="80"  r="6" class="dot"/>
+                  <circle cx="520" cy="60"  r="6" class="dot"/>
+                </g>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Right: text -->
+          <div style="flex:1 1 360px; min-width:320px;">
+            <h2>The 5 Maturity Levels</h2>
+            <p class="drma-intro">Progress is cumulative. Higher levels build on the foundations of the earlier ones.</p>
+            <p class="drma-footnote">On the Overview page, choosing a level displays all practices up to that level.</p>
+
+            <p><strong>Level 1 – Ad Hoc:</strong> Resilience practices are minimal, reactive, and inconsistent. Success depends on individual effort rather than process or design.</p>
+            <p><strong>Level 2 – Repeatable:</strong> Basic practices exist and can be repeated, but they are informal, siloed, and not yet standardised across the organisation.</p>
+            <p><strong>Level 3 – Defined:</strong> Resilience processes are documented, measured, and applied consistently. Responsibilities and expectations are clear.</p>
+            <p><strong>Level 4 – Managed:</strong> Practices are monitored, tested, and increasingly automated. Performance is actively managed against resilience objectives.</p>
+            <p><strong>Level 5 – Optimised:</strong> Resilience is embedded into culture with continuous improvement and predictive capabilities. The organisation adapts quickly and confidently to disruption.</p>
+          </div>
+        </div>
+      </section>
+
+      <hr class="drma-rule" />
+
+      <!-- Radar profile (left) + text (right) -->
+      <section>
+        <div style="display:flex; gap:24px; align-items:flex-start; flex-wrap:wrap;">
+          <!-- Left: copy (placeholder for now) -->
+          <div class="drma-profile-text" style="flex:1 1 360px; min-width:320px;">
+            <h2>Resilience Profile</h2>
+            <p>The radar visualises your organisation’s maturity across the eight domains of digital resilience. A balanced profile is key—closing gaps in weaker areas typically reduces overall risk more effectively than increasing strength in just one domain.</p>
+            <p>As you complete assessments, the profile evolves to reflect your current state. This creates a living view of resilience that highlights both progress made and areas still vulnerable to disruption.</p>
+            <p>The app also provides tailored guidance on how to improve specific domains. Use this profile to prioritise action, focus investment, and raise resilience in a way that strengthens the whole organisation.</p>
+            <p class="drma-footnote">Design matches the compass for a consistent look.</p>
+          </div>
+
+          <!-- Right: radar -->
+          <div style="flex:1 1 540px; min-width:360px; display:flex; justify-content:center;">
+            <div class="drma-radar">
+              <svg viewBox="0 0 600 600" width="900" height="800" class="drma-radar-svg" aria-hidden="true">
+                <defs>
+                  <!-- Same teal feel as the curve chart -->
+                  <linearGradient id="drmaCurveStrokeR" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%"  stop-color="#8de9ff"/>
+                    <stop offset="100%" stop-color="#37e0ff"/>
+                  </linearGradient>
+                  <linearGradient id="drmaAreaFillR" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%"  stop-color="rgba(141,233,255,.25)"/>
+                    <stop offset="100%" stop-color="rgba(55,224,255,.08)"/>
+                  </linearGradient>
+                  <filter id="radarGlow" x="-30%" y="-30%" width="160%" height="160%">
+                    <feGaussianBlur stdDeviation="3" result="b"/>
+                    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                  </filter>
+                </defs>
+
+                <!-- Outer compass ring (reused look) -->
+                <circle cx="300" cy="300" r="220" class="ring"/>
+
+                <!-- Optional faint grid -->
+                <g class="grid">
+                  <circle cx="300" cy="300" r="60"/>
+                  <circle cx="300" cy="300" r="110"/>
+                  <circle cx="300" cy="300" r="160"/>
+                </g>
+
+                <!-- Labels copied from the compass -->
+                <g class="labels" transform="translate(300 300)">
+                  <g transform="rotate(0) translate(0,-270)">
+                    <text class="label"><tspan x="0">Availability,</tspan><tspan x="0" dy="1.15em">Reliability &amp; Durability</tspan></text>
+                  </g>
+                  <g transform="rotate(45) translate(0,-290)">
+                    <text class="label" transform="rotate(-45)">
+                      <tspan x="0">Performance &amp;</tspan><tspan x="0" dy="1.15em">Quality</tspan>
+                    </text>
+                  </g>
+                  <g transform="rotate(90) translate(0,-290)">
+                    <text class="label" transform="rotate(-90)"><tspan x="0">Security &amp;</tspan><tspan x="0" dy="1.15em">Safety</tspan></text>
+                  </g>
+                  <g transform="rotate(135) translate(0,-270)">
+                    <text class="label" transform="rotate(-135)"><tspan x="0">Auditability</tspan></text>
+                  </g>
+                  <g transform="rotate(180) translate(0,-270)">
+                    <text class="label" transform="rotate(-180)"><tspan x="0">Adaptability, Extensibility,</tspan><tspan x="0" dy="1.15em">Agility &amp; Creativity</tspan></text>
+                  </g>
+                  <g transform="rotate(225) translate(0,-270)"><text class="label" transform="rotate(-225)"><tspan x="0">Capacity &amp;</tspan><tspan x="0" dy="1.15em">Elasticity</tspan></text></g>
+                  <g transform="rotate(270) translate(0,-290)"><text class="label" transform="rotate(-270)"><tspan x="0">Efficiency &amp;</tspan><tspan x="0" dy="1.15em">Cost</tspan></text></g>
+                  <g transform="rotate(315) translate(0,-290)"><text class="label" transform="rotate(-315)"><tspan x="0">Usability &amp;</tspan><tspan x="0" dy="1.15em">Operability</tspan></text></g>
+                </g>
+
+                <!-- Radar polygon -->
+                <polygon class="radar" points="300,183 395.5,204.5 399,300 389.1,389.1 300,381 198.2,401.8 195.6,300 221.1,221.1" filter="url(#radarGlow)"/>
+
+                <!-- Radar dots -->
+                <g class="radar-dots" filter="url(#radarGlow)">
+                  <circle cx="300" cy="183"   r="3"/>
+                  <circle cx="395.5" cy="204.5" r="3"/>
+                  <circle cx="399" cy="300"   r="3"/>
+                  <circle cx="389.1" cy="389.1" r="3"/>
+                  <circle cx="300" cy="381"   r="3"/>
+                  <circle cx="198.2" cy="401.8" r="3"/>
+                  <circle cx="195.6" cy="300"   r="3"/>
+                  <circle cx="221.1" cy="221.1" r="3"/>
+                </g>
+                <!-- Radial spokes (under radar) -->
+                <g class="spokes" transform="translate(300 300)">
+                  <!-- draw one spoke straight up to the ring radius, then rotate it 8 times -->
+                  <g>
+                    <line x1="0" y1="0" x2="0" y2="-220"/>
+                    <g transform="rotate(45)"><line x1="0" y1="0" x2="0" y2="-220"/></g>
+                    <g transform="rotate(90)"><line x1="0" y1="0" x2="0" y2="-220"/></g>
+                    <g transform="rotate(135)"><line x1="0" y1="0" x2="0" y2="-220"/></g>
+                    <g transform="rotate(180)"><line x1="0" y1="0" x2="0" y2="-220"/></g>
+                    <g transform="rotate(225)"><line x1="0" y1="0" x2="0" y2="-220"/></g>
+                    <g transform="rotate(270)"><line x1="0" y1="0" x2="0" y2="-220"/></g>
+                    <g transform="rotate(315)"><line x1="0" y1="0" x2="0" y2="-220"/></g>
+                  </g>
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="drma-cta">
+        <a href="content.html" class="drma-btn drma-btn--lg drma-btn--start">
+          Start assessment
+        </a>
+      </div>
+    </article>
+  </div>
+</body>
+</html>

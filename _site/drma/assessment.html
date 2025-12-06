@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DRMA — Assessment</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <script defer src="drma-assessment.js"></script>
+  <link rel="stylesheet" href="drma.css">
+  <style>
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:#0b1729;color:#d9e4ef}
+    .wrap{max-width:1160px;margin:18px auto;padding:0 16px}
+    .panel{background:#0e1a2a;border:1px solid rgba(126,163,214,.3);border-radius:14px;box-shadow:0 8px 24px rgba(6,14,24,.55);padding:16px;margin-top:14px}
+    .row{display:flex;gap:12px;flex-wrap:wrap}
+    .col{flex:1 1 320px}
+    .bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+    .btn{background:linear-gradient(180deg,#173a61,#112a49);color:#dbe9ff;border:1px solid rgba(111,139,184,.35);border-radius:10px;padding:10px 14px;font-weight:600;cursor:pointer}
+    .levels{display:flex;gap:10px;flex-wrap:wrap}
+    .btn.active{background:linear-gradient(180deg,#37e0ff,#22b8e7);color:#042033;border-color:#53e6ff}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:10px}
+    .card{background:#0f1b2d;border:1px solid rgba(111,139,184,.35);border-radius:12px;min-height:220px;box-shadow:0 6px 18px rgba(6,14,24,.6);display:flex;flex-direction:column}
+    .card .head{display:flex;align-items:center;justify-content:space-between;padding:12px 14px 4px}
+    .card .title{font-weight:700;color:#e9f4ff}
+    .card .meta{font-size:12px;color:#9fb6d9}
+    .card .body{padding:0 14px 12px;color:#cddcf1;font-size:13px;line-height:1.4}
+    .card .foot{margin-top:auto;border-top:1px solid rgba(126,163,214,.35);display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:linear-gradient(90deg,rgba(133,198,255,.15),rgba(4,32,51,0))}
+    .pill{font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;border:1px solid #64e0ff;background:linear-gradient(180deg,#bff2ff,#8de9ff);color:#032133}
+    .status{font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;text-transform:capitalize;border:1px solid transparent}
+    .status.no{color:#2a1c0e;background:linear-gradient(180deg,#ffe1b6,#ffc97f);border-color:#f5b35a}
+    .status.splunk{color:#0e2a1f;background:linear-gradient(180deg,#b6f6cf,#7fe8ae);border-color:#5ad38e}
+    .status.other{color:#2d0f12;background:linear-gradient(180deg,#ffc4cf,#ffa0ae);border-color:#f2798c}
+    details.group{border-top:1px solid rgba(126,163,214,.25);padding-top:8px}
+    summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;color:#e8f2ff}
+    summary::-webkit-details-marker{display:none}
+    .chev{display:inline-block;transition:transform .2s}
+    details[open] .chev{transform:rotate(90deg)}
+
+        .modal-backdrop{
+      position:fixed; inset:0; background:rgba(3,8,18,.75);
+      display:flex; align-items:center; justify-content:center;
+      z-index:999;
+    }
+    .modal-box{
+      background:#0e1a2a; border-radius:16px;
+      border:1px solid rgba(126,163,214,.6);
+      box-shadow:0 18px 40px rgba(3,8,18,.9);
+      max-width:720px; width:90%; max-height:80vh;
+      display:flex; flex-direction:column; padding:16px;
+    }
+    .modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+    .modal-header h3{margin:0;font-size:18px;}
+    .modal-body{flex:1 1 auto;display:flex;flex-direction:column;gap:8px;}
+    .modal-footer{display:flex;justify-content:flex-end;gap:8px;margin-top:10px;}
+    .modal-textarea{
+      width:100%; min-height:220px; max-height:50vh;
+      background:#050b14; color:#e9f4ff;
+      border-radius:10px; border:1px solid rgba(126,163,214,.5);
+      padding:10px; font-family:Menlo,Consolas,monospace; font-size:13px;
+      resize:vertical;
+    }
+
+        .bar-head{
+      flex: 1 1 auto;
+      min-width: 0;              /* allow shrink */
+    }
+    .bar-head .muted{
+      overflow-wrap: anywhere;   /* break the long ID */
+      word-break: break-all;
+    }
+    .bar-actions{
+      flex: 0 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+.bar{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.bar-actions{
+  flex: 0 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end; /* back to normal */
+}
+
+/* Only the top header panel should stack its head + actions */
+.bar--stacked{
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.bar--stacked .bar-actions{
+  justify-content: center; /* centre the buttons left-to-right */
+}
+
+.overview-radar-row{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-top:14px;
+}
+
+.overview-radar-row .panel{
+  flex:1 1 360px;
+  margin-top:0; /* the row already has the top margin */
+}
+
+/* Level buttons are display-only on the assessment page */
+.levels .btn{
+  cursor: default;
+}
+
+.drma-nav{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.drma-nav__spacer{
+  flex:1;
+}
+
+.drma-nav__ref{
+  margin-left:auto;
+  font-size:12px;
+  color:#9fb6d9;
+  white-space:nowrap;
+}
+
+.bar--footer{
+  justify-content: center;
+}
+
+.bar--footer .bar-actions{
+  justify-content: center;
+}
+
+.bar-levels{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-left:auto;   /* pushes this section to the right */
+  flex-wrap:wrap;
+}
+
+.bar--center{
+  justify-content: center;
+}
+
+.bar--split{
+  justify-content: space-between;
+}
+
+.bar-left,
+.bar-right{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
+/* Print table is hidden on screen */
+#print_table_panel {
+  display: none;
+}
+
+/* Basic styling for the print table */
+.print-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.print-table th,
+.print-table td {
+  border: 1px solid rgba(126,163,214,0.45);
+  padding: 4px 6px;
+  text-align: left;
+}
+
+.print-table th {
+  background: rgba(15,27,45,0.85);
+}
+
+/* Print rules */
+@media print {
+  /* Hide the navigation bar and bottom button panel */
+  .drma-nav,
+  .panel:last-of-type,   /* bottom actions panel */
+  #groups {              /* card grid */
+    display: none !important;
+  }
+
+  /* Make overview + radar row stack vertically for print */
+  .overview-radar-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* Make sure both overview and by-domain panels are visible */
+  #radar-panel,
+  #overview-panel {
+    display: block !important;
+  }
+
+  /* Show the compact table */
+  #print_table_panel {
+    display: block !important;
+    page-break-inside: auto;
+  }
+
+  /* Optional: simplify styling for paper */
+  body {
+    background: #ffffff;
+    color: #000000;
+  }
+  .panel {
+    background: #ffffff;
+    box-shadow: none;
+    border-color: #cccccc;
+  }
+}
+
+  </style>
+</head>
+<body>
+<div class="drma-nav">
+  <span class="drma-nav__title">DRMA</span>
+  <a href="welcome.html" class="drma-nav__link">Welcome</a>
+  <a href="content.html" class="drma-nav__link">Overview</a>
+  <span class="drma-nav__link drma-nav__link--active">Assessment</span>
+
+  <span class="drma-nav__spacer"></span>
+  <span class="drma-nav__ref" id="aid"></span>
+</div>
+
+  <div class="wrap">
+       <div class="panel">
+  <div class="bar">
+    <div class="bar-head">
+      <strong>Assessment</strong>
+      <div class="muted">
+        <b>Business: </b><span id="biz">—</span> · <b>Operational: </b><span id="op">—</span>
+      </div>
+    </div>
+
+    <div class="bar-levels">
+      <span class="muted">Displaying cards for level:</span>
+      <div id="levels" class="levels"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Overview + Radar side by side -->
+<div class="overview-radar-row">
+
+    <!-- Overview + Radar in one box -->
+  <div class="panel" id="radar-panel">
+    <h3 style="margin:0 0 4px;">Overview</h3>
+    <p id="overview_headline"
+       class="muted"
+       style="margin:0 0 6px;">Loading overview…</p>
+    <p id="overview_stats"
+       class="muted"
+       style="margin:0 0 10px;">Loading stats…</p>
+
+    <div style="position:relative; min-height:260px; margin-top:86px;">
+      <canvas id="radar"
+              aria-label="Radar chart"
+              role="img"></canvas>
+    </div>
+  </div>
+
+  <!-- By domain only -->
+  <div class="panel" id="overview-panel">
+    <h3 style="margin:0 0 4px;">By domain</h3>
+    <ul id="overview_domains"
+        class="muted"
+        style="margin:0; padding-left:18px;"></ul>
+  </div>
+
+</div>
+
+<!-- Top focus areas (full-width below) -->
+<div class="panel" id="focus-panel">
+  <h3 style="margin:0 0 6px;">Top focus areas</h3>
+  <p class="muted" id="focus_intro" style="margin:0 0 8px;">Loading focus areas…</p>
+  <ul id="focus_list" class="muted" style="margin:0; padding-left:18px;"></ul>
+</div>
+
+<!-- Detailed domains / cards -->
+<div class="panel" id="groups"></div>
+
+<!-- Print-friendly table (hidden on screen, shown when printing) -->
+<div class="panel" id="print_table_panel"></div>
+    <!-- Footer actions -->
+<!-- Bottom actions -->
+<div class="panel">
+  <div class="bar bar--split">
+    <div class="bar-left">
+      <button class="btn" onclick="nav('content')">← Back</button>
+    </div>
+    <div class="bar-right">
+      <button id="export" class="btn">Export ID</button>
+      <!-- keep the hidden input so import logic still works if you reintroduce it -->
+      <input id="importFile" type="file" accept="application/json" style="display:none" />
+      <button id="prompt_open" class="btn">Generate AI prompt</button>
+      <button id="print_report" class="btn">Print report</button>
+    </div>
+  </div>
+</div>
+  </div>
+
+    <!-- AI prompt modal -->
+  <div id="prompt_modal" class="modal-backdrop" style="display:none;">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>AI summary prompt</h3>
+        <button id="prompt_close" class="btn">Close</button>
+      </div>
+      <div class="modal-body">
+        <p class="muted">
+          Copy this prompt into your AI tool of choice. It includes your selections, domain stats,
+          and top focus areas. You can ask it for an executive summary or action plan.
+        </p>
+        <textarea id="prompt_text" class="modal-textarea" readonly></textarea>
+      </div>
+      <div class="modal-footer">
+        <button id="prompt_copy" class="btn">Copy to clipboard</button>
+        <button id="prompt_ok" class="btn">OK &amp; close</button>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+</html>

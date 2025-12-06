@@ -1,0 +1,1851 @@
+/* =========================
+   drma — DARK NAVY THEME
+   Inspired by your webform screenshot (navy gradient + teal accents)
+   Scoped to dashboard body so Splunk chrome is untouched
+   ========================= */
+
+.splunk-header.splunk-view.splunk-header.splunk-view > div[data-view="views/shared/appbar/Master"]{
+  background: rgb(11, 23, 41) !important;  /* = #0B1729 */
+}
+
+/* Background: deep radial blues */
+.drma-theme.drma-theme--dark .dashboard-body,
+.drma-theme.drma-theme--dark {
+  /* background:
+    radial-gradient(1200px 600px at 80% 0%, #0e223b 0%, rgba(14,34,59,0) 60%),
+    radial-gradient(900px 500px at 10% 20%, #102a4a 0%, rgba(16,42,74,0) 65%),
+    linear-gradient(180deg, #0b1729 0%, #0f1b2d 100%);
+  */
+  background: transparent !important;
+  box-shadow: none !important;
+  border: 0 !important;
+
+
+  min-height: 100%;
+  color: #d9e4ef;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Make default Splunk panels transparent inside our theme */
+.drma-theme.drma-theme--dark .panel-body,
+.drma-theme.drma-theme--dark .panel-element-row {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Content container: dark card with soft glow */
+.drma-theme--dark .drma-content{
+  max-width: 1160px; margin: 16px auto 24px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
+  border: 1px solid rgba(111, 139, 184, 0.25);
+  border-radius: 14px;
+  box-shadow:
+    0 12px 30px rgba(5,13,24,0.6),
+    inset 0 1px 0 rgba(255,255,255,0.05);
+  padding: 18px 22px;
+}
+
+/* Section headers: light text + blue underline */
+.drma-theme--dark .drma-section-header{
+  color: #e8f2ff;
+  border-bottom: 1px solid rgba(111,139,184,0.35);
+  padding-bottom: 8px;
+}
+
+/* Level buttons: cyan/blue gradient */
+:root{
+  --teal:#37e0ff;
+  --teal-2:#22b8e7;
+  --navy-1:#163a5f;
+  --navy-2:#0d253f;
+  --muted:#6f8bb8;
+}
+.drma-theme--dark .drma-levels {
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:center;   /* center buttons horizontally */
+  margin: 10px 0 20px;      /* optional spacing above/below */
+}
+
+.drma-theme--dark .drma-btn{
+  background: linear-gradient(180deg, #173a61 0%, #112a49 100%);
+  color:#dbe9ff; border:1px solid rgba(111,139,184,0.35);
+  border-radius:10px; padding:8px 14px; font-weight:600;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.05);
+  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+.drma-theme--dark .drma-btn:hover{ transform: translateY(-1px); border-color:#7ea3d6; }
+.drma-theme--dark .drma-btn.active{
+  background: linear-gradient(180deg, var(--teal) 0%, var(--teal-2) 100%);
+  color:#042033; border-color:#53e6ff; box-shadow: 0 4px 14px rgba(55,224,255,.35);
+}
+/* Optional: visually “disabled” for levels above the selected max */
+.drma-theme--dark .drma-btn:not(.active) { opacity:.7; }
+
+/* Center the whole card grid (1 card = centered, 2 cards = group centered, etc.) */
+.drma-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 340px)); /* fixed-ish card width */
+  justify-content: center;   /* <-- centers the columns block */
+  gap: 18px;
+  margin-top: 14px;
+}
+
+/* Card shell: dark surface with subtle border + hover lift */
+.drma-theme--dark .drma-card{
+  background: linear-gradient(180deg, #0f1b2d 0%, #0e1a2a 100%);
+  border:1px solid rgba(111,139,184,0.35);
+  border-radius:12px; min-height:260px;
+  box-shadow: 0 6px 18px rgba(6,14,24,0.6), inset 0 1px 0 rgba(255,255,255,0.03);
+  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+  display:flex; flex-direction:column; overflow:hidden;
+}
+.drma-theme--dark .drma-card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(6,14,24,0.7);
+  border-color:#7ea3d6;
+}
+
+/* Inner layout */
+.drma-card-inner{padding:14px 16px 10px}
+
+/* Head row: rounded icon + short-id chip */
+.drma-card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.drma-card-icon{
+  width:38px;height:38px;border-radius:10px;
+  background: radial-gradient(120% 120% at 30% 20%, #2a4f88 0%, #163a5f 100%);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 6px 16px rgba(18,44,80,.45);
+}
+.drma-card-icon svg{width:22px;height:22px;fill:#e2f3ff}
+.drma-card-short{
+  font-size:12px;font-weight:700;color:#cfe3ff;
+  background: rgba(111,139,184,0.25); border:1px solid rgba(126,163,214,0.45);
+  border-radius:8px; padding:4px 8px;
+}
+
+/* Level chip (cyan) */
+.level-chip{
+  display:inline-block; padding:4px 10px; border-radius:999px; font-size:12px; font-weight:700;
+  color:#032133; background: linear-gradient(180deg, #bff2ff 0%, #8de9ff 100%);
+  border:1px solid #64e0ff; box-shadow: inset 0 1px 0 rgba(255,255,255,.5);
+}
+.drma-card-level{margin:2px 0 8px}
+
+/* Titles + text */
+.drma-card-title{color:#e9f4ff; font-size:15px; margin:0 0 6px}
+.drma-card-meta{color:#9fb6d9; font-size:12px; margin-bottom:2px}
+.drma-card-desc{color:#cddcf1; font-size:13px; line-height:1.4; margin:0}
+
+/* Footer strip: subtle blue glow */
+.drma-card-footer{
+  margin-top:auto;height:32px;
+  background: linear-gradient(90deg, rgba(133,198,255,0.15), rgba(4,32,51,0));
+  border-top:1px solid rgba(126,163,214,0.35);
+  display:flex;align-items:center;justify-content:flex-end;padding:0 12px
+}
+.drma-brand{font-size:11px;color:#8fb8e6}
+
+/* ===== drma dark theme: page + panel chrome ===== */
+
+/* Page header (the big title row inside the dashboard area) */
+.drma-theme--dark .dashboard-header {
+  background: linear-gradient(180deg, rgba(15,27,45,.85), rgba(12,22,36,.85));
+  border: 1px solid rgba(126,163,214,.35);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(6,14,24,.55), inset 0 1px 0 rgba(255,255,255,.05);
+  padding: 12px 16px;
+  max-width: 1160px;
+  margin: 10px auto 8px;
+}
+.drma-theme--dark .dashboard-header .dashboard-title {
+  color: #e8f4ff !important;
+  font-weight: 700;
+}
+.drma-theme--dark .dashboard-header .dashboard-description {
+  color: #9fb6d9 !important;
+}
+
+/* View controls (Edit / Export) to blend in */
+.drma-theme--dark .dashboard-view-controls .btn {
+  background: linear-gradient(180deg, #173a61 0%, #112a49 100%);
+  color: #dbe9ff;
+  border: 1px solid rgba(126,163,214,.35);
+  border-radius: 8px;
+}
+.drma-theme--dark .dashboard-view-controls .btn:hover {
+  border-color: #93b6e6;
+}
+
+/* Panel chrome (any panel headers, bodies) */
+.drma-theme--dark .dashboard-row,
+.drma-theme--dark .panel,
+.drma-theme--dark .panel-head,
+.drma-theme--dark .panel-body,
+.drma-theme--dark .dashboard-cell .panel-body {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Panel titlebars if used (h3 in panel head) */
+.drma-theme--dark .panel-head h3,
+.drma-theme--dark .panel-title {
+  color: #e8f2ff !important;
+  border-bottom: 1px solid rgba(126,163,214,.25);
+  padding-bottom: 6px;
+  margin-bottom: 8px;
+}
+
+/* Kill any residual light gutters/margins around panels */
+.drma-theme--dark .dashboard-row .dashboard-cell {
+  background: transparent !important;
+}
+.drma-theme--dark .dashboard-row .dashboard-cell .panel-element-row {
+  background: transparent !important;
+}
+
+/* Tighten outer gutters so the dark content block aligns */
+.drma-theme--dark .dashboard-body {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+/* ===== drma dark theme: fix page background + header ===== */
+
+/* PAGE BACKGROUND (outer wrapper of the dashboard content) */
+.main-section-body {
+  /* navy gradient background, same palette as cards */
+  background:
+    radial-gradient(1200px 600px at 80% 0%, #0e223b 0%, rgba(14,34,59,0) 60%),
+    radial-gradient(900px 500px at 10% 20%, #102a4a 0%, rgba(16,42,74,0) 65%),
+    linear-gradient(180deg, #0b1729 0%, #0f1b2d 100%) !important;
+  color: #d9e4ef;  /* default text if anything leaks outside */
+}
+
+/* DASHBOARD HEADER (title bar) */
+.dashboard-header {
+  background: linear-gradient(180deg, rgba(15,27,45,.92), rgba(12,22,36,.92)) !important;
+  border: 1px solid rgba(126,163,214,.35) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 24px rgba(6,14,24,.55), inset 0 1px 0 rgba(255,255,255,.05) !important;
+  padding: 10px 14px !important;
+}
+
+/* Header title + description colours */
+.dashboard-header .dashboard-title,
+.dashboard-header .dashboard-header-title {
+  color: #e8f4ff !important;
+  font-weight: 700 !important;
+}
+.dashboard-header .dashboard-description {
+  color: #9fb6d9 !important;
+}
+
+/* Header action buttons blend in */
+.dashboard-header .dashboard-view-controls .btn {
+  background: linear-gradient(180deg, #173a61 0%, #112a49 100%) !important;
+  color: #dbe9ff !important;
+  border: 1px solid rgba(126,163,214,.35) !important;
+  border-radius: 8px !important;
+}
+.dashboard-header .dashboard-view-controls .btn:hover {
+  border-color: #93b6e6 !important;
+}
+
+/* ===== drma dark theme: panel backgrounds ===== */
+
+.dashboard-panel,
+.dashboard-element,
+.panel-body {
+  background: linear-gradient(180deg, #0e223b 0%, #0b1729 100%) !important;
+  border: 1px solid rgba(126,163,214,.2) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 6px 18px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.05) !important;
+  color: #d9e4ef !important;
+}
+
+/* Kill Splunk’s white background inheritance */
+.dashboard-panel .panel-element-row,
+.dashboard-panel .panel-element,
+.dashboard-panel .panel-body > .html {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Optional: match section headers inside panel */
+.drma-section-header {
+  color: #a9c4f2;
+  font-weight: 600;
+  font-size: 1.3em;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(126,163,214,.25);
+}
+
+/* ---- Welcome page hero & CTA (dark theme) ---- */
+.drma-hero{
+  max-width:1160px; margin:16px auto;
+  padding:28px 26px;
+  background:
+    radial-gradient(600px 300px at 20% 0%, rgba(55,224,255,.12), rgba(55,224,255,0) 60%),
+    linear-gradient(180deg, rgba(15,27,45,.92), rgba(12,22,36,.92));
+  border:1px solid rgba(126,163,214,.35);
+  border-radius:14px;
+  box-shadow:0 12px 30px rgba(6,14,24,.55), inset 0 1px 0 rgba(255,255,255,.05);
+  color:#e8f4ff;
+}
+.drma-hero h1{ margin:0 0 6px; font-size:28px; font-weight:800; }
+.drma-hero p{ margin:0 0 16px; color:#b9cdea; }
+.drma-cta{ display:flex; gap:12px; flex-wrap:wrap; }
+
+/* Re-usable CTA buttons */
+.drma-btn--lg{ padding:10px 18px; border-radius:10px; font-size:14px; }
+.drma-btn--primary{
+  background: linear-gradient(180deg, #37e0ff 0%, #22b8e7 100%);
+  color:#042033; border:1px solid #53e6ff; box-shadow:0 4px 14px rgba(55,224,255,.35);
+}
+.drma-btn--primary:hover{ filter: brightness(1.05); }
+
+/* ---- Global page background ---- */
+body.dashboard-body,
+.main-section-body,
+.dashboard-page {
+  background: linear-gradient(180deg, #0b1625 0%, #0e1d33 100%) !important;
+  color: #e8f4ff;
+  min-height: 100vh; /* ensures it covers full screen */
+}
+
+/* Section header layout */
+.drma-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;     /* centers contents horizontally */
+  gap: 8px;
+  width: 100%;
+  background: transparent;
+  border: 0;
+  text-align: center;
+  cursor: pointer;
+  color: #e8f2ff;
+  padding: 10px 0 12px;
+  border-bottom: 1px solid rgba(126,163,214,.25);
+  position: relative;
+}
+
+/* Chevron stays anchored left */
+.drma-section-header .drma-chevron {
+  position: absolute;
+  left: 0;
+  display: flex;
+  width: 20px;
+  height: 20px;
+  align-items: center;
+  justify-content: center;
+}
+.drma-chevron svg {
+  width: 20px;
+  height: 20px;
+  fill: #a9c4f2;
+  transition: transform .15s ease;
+}
+
+/* Rotate chevron when collapsed */
+.drma-section.is-collapsed .drma-chevron svg {
+  transform: rotate(-90deg);
+}
+
+/* Group title + count in a center block */
+.drma-section-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 1.2em;
+}
+
+/* Count pill */
+.drma-section-header .drma-count {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #032133;
+  background: linear-gradient(180deg, #bff2ff 0%, #8de9ff 100%);
+  border: 1px solid #64e0ff;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.5);
+  vertical-align: middle;
+}
+
+/* Container for level buttons */
+.drma-levels-container {
+  text-align: center;
+  margin: 10px auto 20px;
+  padding: 8px 0;
+  background: transparent;    /* no background */
+  border: none;               /* no border */
+  box-shadow: none;           /* no shadow */
+}
+
+/* Buttons centered inline */
+.drma-theme--dark .drma-levels {
+  display: inline-flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Line that sits ABOVE the section title */
+.drma-section-divider {
+  border-top: 1px solid rgba(126,163,214,.25);
+  margin: 18px 0 8px;
+}
+
+/* Tighter first one so page doesn’t start with a huge gap */
+.drma-section:first-child .drma-section-divider {
+  margin-top: 8px;
+}
+
+/* Header no longer owns the line */
+.drma-section-header{
+  display:flex; justify-content:center; align-items:center; gap:6px;
+  width:100%; background:transparent; border:0; text-align:center; cursor:pointer;
+  color:#e8f2ff; padding:6px 0 12px;
+}
+
+/* Chevron + count stay as you had */
+.drma-chevron{ display:inline-flex; width:20px; height:20px; flex:0 0 auto; }
+.drma-chevron svg{ width:20px; height:20px; fill:#a9c4f2; transition: transform .15s ease; }
+.drma-section.is-collapsed .drma-chevron svg{ transform: rotate(-90deg); }
+.drma-section-title{ flex:0 0 auto; }
+
+/* ——— Remove the line UNDER the header ——— */
+.drma-theme--dark .drma-section-header,
+.drma-section-header {
+  border-bottom: 0 !important;   /* kill the extra rule */
+  padding-bottom: 6px;            /* keep a little breathing room */
+}
+
+/* (optional) a touch of space before the cards */
+.drma-grid { margin-top: 10px; }
+
+/* Keep the divider ABOVE the header */
+.drma-section-divider {
+  border-top: 1px solid rgba(126,163,214,.25);
+  margin: 18px 0 8px;
+}
+
+/* Kill any Splunk chrome for levels row */
+.drma-levels-container,
+.drma-levels-container .dashboard-panel,
+.drma-levels-container .dashboard-element,
+.drma-levels-container .panel-body {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+
+/* Remove box styling around dashboard title */
+.dashboard-header,
+.dashboard-header .dashboard-panel,
+.dashboard-header .dashboard-element,
+.dashboard-header .panel-body {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Style the title text itself */
+.dashboard-header .dashboard-title {
+  color: #e8f4ff !important;
+  font-size: 1.6em;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* --- FLIP: keep the original card shell intact --- */
+.drma-card {                 /* your existing visuals stay here */
+  position: relative;
+  background: linear-gradient(180deg, #0f1b2d 0%, #0e1a2a 100%);
+  border: 1px solid rgba(111,139,184,0.35);
+  border-radius: 12px;
+  min-height: 260px;
+  box-shadow: 0 6px 18px rgba(6,14,24,0.6), inset 0 1px 0 rgba(255,255,255,0.03);
+  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+  display: flex;
+  overflow: hidden;          /* keep faces clipped to radius */
+  cursor: pointer;
+}
+
+.drma-card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(6,14,24,0.7);
+  border-color:#7ea3d6;
+}
+
+/* The rotating inner */
+.drma-flip-inner{
+  position: relative;
+  width: 100%;
+  min-height: 260px;         /* match card min-height */
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+/* Flipped state */
+.drma-card.flipped .drma-flip-inner{ transform: rotateY(180deg); }
+
+/* Two faces */
+.drma-face{
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Put the padding we used to have on .drma-card-inner here */
+.drma-face > .drma-pad{
+  padding: 14px 16px 10px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* FRONT = same look as before (the shell is already dark; keep faces transparent) */
+.drma-front{ }
+
+/* BACK = subtle variant so you can tell it's the back */
+.drma-back{
+  transform: rotateY(180deg);
+  background: linear-gradient(180deg, #122a44 0%, #0b182a 100%);
+  color: #d9e4ef;
+}
+
+/* Keep your existing head/body/footer styles working */
+.drma-card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.drma-card-level{margin:2px 0 8px}
+.drma-card-body{flex: 1 1 auto}
+.drma-card-footer{
+  margin-top:auto;height:32px;
+  background: linear-gradient(90deg, rgba(133,198,255,0.15), rgba(4,32,51,0));
+  border-top:1px solid rgba(126,163,214,0.35);
+  display:flex;align-items:center;justify-content:flex-end;padding:0 12px
+}
+
+/* Footer status pill */
+.drma-status {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  text-transform: capitalize;
+}
+
+/* Softer status pills for dark navy theme */
+.drma-status.not-configured {
+  background: rgba(214, 72, 72, 0.10);   /* softer red */
+  border: 1px solid rgba(214, 72, 72, 0.28);
+  color: #F2C9C9;                         /* muted text */
+}
+
+.drma-status.configured {
+  background: rgba(56, 170, 140, 0.10);   /* soft teal/green */
+  border: 1px solid rgba(56, 170, 140, 0.28);
+  color: #CDEEE3;
+}
+
+.drma-status.needs-review {
+  background: rgba(240, 181, 67, 0.10);   /* soft amber */
+  border: 1px solid rgba(240, 181, 67, 0.28);
+  color: #F6E6BF;
+}
+
+.drma-card-footer{ display:flex; justify-content:flex-end; align-items:center; height:32px; }
+.drma-status{
+  font-size:12px; font-weight:700; padding:4px 10px; border-radius:999px;
+  text-transform:capitalize; border:1px solid transparent;
+}
+
+/* states */
+.drma-status.status-configured{
+  color:#0e2a1f; background:linear-gradient(180deg,#b6f6cf,#7fe8ae);
+  border-color:#5ad38e;
+}
+.drma-status.status-not-configured{
+  color:#2a1c0e; background:linear-gradient(180deg,#ffe1b6,#ffc97f);
+  border-color:#f5b35a;
+}
+.drma-status.status-needs-review{
+  color:#2d0f12; background:linear-gradient(180deg,#ffc4cf,#ffa0ae);
+  border-color:#f2798c;
+}
+
+/* background colour fix */
+/* --- DRMA: show the panel gradient, but make sections transparent --- */
+
+/* 1) Kill only the section wrapper backgrounds (and any pseudo layers) */
+#drma_sections .drma-section,
+#drma_sections .drma-section::before,
+#drma_sections .drma-section::after {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: 0 !important;
+}
+
+/* If Splunk injects wrappers inside a section, make those transparent too */
+#drma_sections .drma-section > .panel,
+#drma_sections .drma-section > .panel-body,
+#drma_sections .drma-section > .dashboard-element,
+#drma_sections .drma-section > .dashboard-element > .content,
+#drma_sections .drma-section > .dashboard-element > .html,
+#drma_sections .drma-section .panel-element-row {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: 0 !important;
+}
+
+/* 2) Keep the divider line visible ABOVE the title */
+.drma-section-divider {
+  background: transparent !important;
+  border-top: 1px solid rgba(126,163,214,.25) !important;
+  height: 0;
+  margin: 18px 0 8px;   /* line, then a bit of space before the title */
+}
+
+/* 3) Section header itself has no background/border, but stays centered */
+.drma-section-header {
+  background: transparent !important;
+  border: 0 !important;         /* don’t draw another line here */
+  color: #e8f2ff;
+  padding: 6px 0 12px;          /* comfortable spacing under the divider */
+  text-align: center;
+}
+
+/* Chevron + count unaffected by transparency */
+.drma-section-header .drma-chevron svg { fill: #a9c4f2; }
+
+/* Make the container that holds all sections transparent */
+#drma_sections {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Each section row + its header + grid should NOT paint a background */
+.drma-section,
+.drma-section::before,
+.drma-section::after,
+.drma-section-header,
+.drma-grid {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: 0; /* the horizontal rule is controlled separately */
+}
+
+/* Keep the horizontal dividers only */
+.drma-section-divider {
+  border-top: 1px solid rgba(126,163,214,.25) !important;
+  background: transparent !important;
+}
+
+/* If Splunk panel body is reintroducing a fill inside the panel, kill it */
+.dashboard-panel .panel-body > .html {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: 0 !important;
+}
+
+/* Welcome page specific content styling */
+.drma-welcome .drma-content {
+  background: linear-gradient(180deg, rgba(20,35,55,0.9), rgba(15,27,45,0.9));
+  border: 1px solid rgba(126,163,214,0.25);
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(5,13,24,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
+  padding: 18px 22px;
+  color: #e8f4ff;
+}
+
+.drma-welcome .drma-content h2 {
+  font-size: 1.3em;
+  font-weight: 700;
+  color: #f2f8ff;
+  margin-bottom: 10px;
+}
+
+.drma-welcome .drma-content p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #d0e0f5;
+  margin-bottom: 12px;
+}
+
+.drma-welcome .drma-note {
+  margin-top: 12px;
+  padding: 8px 12px;
+  border-left: 3px solid var(--teal);
+  background: rgba(55,224,255,0.08);
+  border-radius: 6px;
+  font-size: 13px;
+  color: #cdefff;
+}
+
+/* ==== Welcome page readability (scoped) ==== */
+.drma-welcome .drma-content {
+  /* subtle, semi-opaque panel so text pops */
+  background: linear-gradient(180deg, rgba(20,35,55,.88), rgba(15,27,45,.88));
+  border: 1px solid rgba(126,163,214,.28);
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(5,13,24,.45), inset 0 1px 0 rgba(255,255,255,.05);
+  padding: 18px 22px;
+}
+
+/* body copy + lists */
+.drma-welcome .drma-content p,
+.drma-welcome .drma-content li {
+  color: #e7f0ff !important;     /* brighter than the muted base */
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+/* title */
+.drma-welcome .drma-hero h1 {
+  color: #ffffff !important;
+}
+
+/* headings */
+.drma-welcome .drma-content h2 {
+  color: #f3f8ff !important;
+  font-weight: 700;
+  margin: 0 0 10px;
+}
+
+/* emphasis + links */
+.drma-welcome .drma-content strong { color: #ffffff !important; }
+.drma-welcome .drma-content em     { color: #d2e7ff !important; }
+.drma-welcome .drma-content a {
+  color: #9fe8ff !important;
+  text-decoration: underline;
+}
+.drma-welcome .drma-note {
+  margin-top: 12px;
+  padding: 8px 12px;
+  border-left: 3px solid var(--teal);
+  background: rgba(55,224,255,.08);
+  border-radius: 6px;
+  color: #dff6ff !important;
+}
+
+/* ---------- Welcome: lean, single-article layout ---------- */
+.drma-welcome .drma-hero--slim{
+  margin: 18px auto 10px;
+  padding: 18px 22px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(20,35,55,.9), rgba(15,27,45,.9));
+  border: 1px solid rgba(126,163,214,.28);
+  box-shadow: 0 8px 20px rgba(5,13,24,.45), inset 0 1px 0 rgba(255,255,255,.05);
+}
+.drma-welcome .drma-hero--slim h1{ color:#fff !important; margin:0 0 4px; }
+.drma-welcome .drma-subtitle{ color:#dfe9ff; margin:0; }
+
+/* One content surface; inner sections are transparent with dividers */
+.drma-welcome .drma-article{
+  max-width: 1040px;
+  margin: 12px auto 28px;
+  padding: 18px 22px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(18,33,53,.82), rgba(14,26,43,.82));
+  border: 1px solid rgba(126,163,214,.22);
+  box-shadow: 0 8px 20px rgba(5,13,24,.4), inset 0 1px 0 rgba(255,255,255,.04);
+}
+.drma-welcome .drma-article h2{
+  color:#f3f8ff;
+  margin: 0 0 8px;
+  font-weight: 700;
+}
+.drma-welcome .drma-article p,
+.drma-welcome .drma-article li{
+  color:#e7f0ff;
+  line-height:1.6;
+  font-size:14px;
+}
+.drma-welcome .drma-article strong{ color:#ffffff; }
+.drma-welcome .drma-article em{ color:#d2e7ff; }
+
+/* Divider between sections */
+.drma-welcome .drma-rule{
+  border: 0;
+  border-top: 1px solid rgba(126,163,214,.25);
+  margin: 14px 0 16px;
+}
+
+/* List spacing */
+.drma-welcome .drma-list{ margin: 0 0 8px 18px; }
+
+/* Tip callout */
+.drma-welcome .drma-note{
+  margin: 8px 0 0;
+  padding: 8px 12px;
+  border-left: 3px solid var(--teal, #37e0ff);
+  background: rgba(55,224,255,.08);
+  border-radius: 6px;
+  color:#dff6ff;
+}
+
+/* Kill old multi-card “content box” style on Welcome only */
+.drma-welcome .drma-content{ display:none; }
+
+/* =========================
+   Welcome page-only tweaks
+   ========================= */
+
+/* 1) HERO: remove box, keep clean centered text */
+.drma-welcome .drma-hero--slim{
+  margin: 20px auto 8px;
+  padding: 0;                 /* no box padding */
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  text-align: center;
+  max-width: 1040px;
+}
+.drma-welcome .drma-hero--slim h1{
+  color: #ffffff !important;
+  margin: 0 0 6px;
+  font-weight: 800;
+}
+.drma-welcome .drma-subtitle{
+  color: #dfe9ff !important;
+  margin: 0;
+  opacity: .95;
+}
+
+/* 2) ARTICLE: single soft surface, readable copy */
+.drma-welcome .drma-article{
+  max-width: 1040px;
+  margin: 12px auto 28px;
+  padding: 18px 22px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(18,33,53,.82), rgba(14,26,43,.82));
+  border: 1px solid rgba(126,163,214,.22);
+  box-shadow: 0 8px 20px rgba(5,13,24,.4), inset 0 1px 0 rgba(255,255,255,.04);
+}
+
+/* brighter, but still on-brand; scoped to welcome only */
+.drma-welcome .drma-article h2{ color:#f3f8ff; margin:0 0 8px; font-weight:700; }
+.drma-welcome .drma-article p,
+.drma-welcome .drma-article li{ color:#e7f0ff; line-height:1.6; font-size:14px; }
+.drma-welcome .drma-article strong{ color:#ffffff; }
+.drma-welcome .drma-article em{ color:#d2e7ff; }
+
+/* section dividers inside the article */
+.drma-welcome .drma-rule{
+  border:0;
+  border-top:1px solid rgba(126,163,214,.25);
+  margin:14px 0 16px;
+}
+
+/* tip callout */
+.drma-welcome .drma-note{
+  margin:8px 0 0;
+  padding:8px 12px;
+  border-left:3px solid var(--teal, #37e0ff);
+  background: rgba(55,224,255,.08);
+  border-radius:6px;
+  color:#dff6ff;
+}
+
+/* keep the old multi-card boxes OFF only on this page */
+.drma-welcome .drma-content{ display:none !important; }
+
+/* ------- Hero: frameless (no box) ------- */
+.drma-welcome .drma-hero--frameless{
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  margin: 18px auto 6px;
+  max-width: 1040px;
+  text-align: center;
+}
+.drma-welcome .drma-hero--frameless h1{ color:#fff !important; margin:0 0 4px; }
+.drma-welcome .drma-hero--frameless .drma-subtitle{ color:#dfe9ff; margin:0; }
+
+/* ------- Article container ------- */
+.drma-welcome .drma-article{
+  max-width: 1040px;
+  margin: 10px auto 28px;
+  padding: 18px 22px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(18,33,53,.82), rgba(14,26,43,.82));
+  border: 1px solid rgba(126,163,214,.22);
+  box-shadow: 0 8px 20px rgba(5,13,24,.4), inset 0 1px 0 rgba(255,255,255,.04);
+}
+.drma-welcome .drma-article h2{ color:#f3f8ff; margin:0 0 8px; font-weight:700; }
+.drma-welcome .drma-article p,
+.drma-welcome .drma-article li{ color:#e7f0ff; line-height:1.6; font-size:14px; }
+.drma-welcome .drma-article strong{ color:#ffffff; }
+.drma-welcome .drma-article em{ color:#d2e7ff; }
+.drma-welcome .drma-intro{ color:#cfe0ff; margin:0 0 10px; }
+.drma-welcome .drma-footnote{ color:#b7c9e9; font-size:12px; margin:8px 0 0; }
+
+/* Divider */
+.drma-welcome .drma-rule{
+  border: 0;
+  border-top: 1px solid rgba(126,163,214,.25);
+  margin: 14px 0 16px;
+}
+
+/* ------- 8-domain compass ------- */
+.drma-welcome .drma-compass {
+  display: flex;
+  justify-content: center;
+  margin: 16px 0 20px;
+}
+.drma-welcome .drma-compass-svg {
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  overflow: visible !important;
+}
+.drma-welcome .drma-compass-svg .ring {
+  fill: none;
+  stroke: rgba(126,163,214,.35);
+  stroke-width: 2;
+}
+.drma-welcome .drma-compass-svg .notch {
+  stroke: rgba(126,163,214,.55);
+  stroke-width: 2;
+}
+.drma-welcome .drma-compass-svg .label {
+  fill: #e6f0ff;
+  font-weight: 700;
+  font-size: 16px;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+
+
+/* Outer triangles */
+.drma-compass .needle-hand{
+  fill:#8de9ff;          /* light steel blue that fits your palette */
+  opacity:.95;
+}
+
+/* Inner triangles (subtle darker shade for depth) */
+.drma-compass .needle-hand-inner{
+  fill:#37e0ff;          /* ~20–30% darker than outer */
+  opacity:.85;
+}
+
+/* Optional: soft highlight on the hub */
+/*
+.drma-compass .needle-hub{
+  fill:#d9f4ff;
+  stroke:rgba(255,255,255,.35);
+  stroke-width:1;
+}
+*/
+
+.needle-hub {
+  fill: url(#drmaDotFill);
+  stroke: none;
+}
+
+/* Compass label styling */
+.drma-compass .label{
+  font-size:16px; font-weight:800; fill:#e8f2ff; letter-spacing:.2px;
+  text-anchor:middle; dominant-baseline:middle;
+  paint-order:stroke; stroke:rgba(10,20,32,.6); stroke-width:3; /* subtle glow for contrast */
+}
+.drma-compass .label tspan{ x:0 } /* ensure each line is centered */
+
+
+
+/* ---- Levels curved chart (Welcome only) ---- */
+.drma-welcome .drma-levels-curve{
+  display:flex; justify-content:center; align-items:center;
+  margin: 8px 0 0;
+}
+.drma-welcome .drma-levels-curve-svg{
+  width:100%; max-width:720px; height:auto;
+}
+
+/* baseline + ticks */
+.drma-welcome .drma-levels-curve-svg .bl{
+  stroke: rgba(126,163,214,.28);
+  stroke-width: 1.5;
+}
+.drma-welcome .drma-levels-curve-svg .tick{
+  stroke: rgba(126,163,214,.35);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+.drma-welcome .drma-levels-curve-svg .ticks text{
+  font-size: 12px;
+  fill: #cfe0ff;
+}
+
+/* curve + dots */
+.drma-welcome .drma-levels-curve-svg .curve{
+  fill: none;
+  stroke: url(#drmaCurveStroke);
+  stroke-width: 3;
+  filter: url(#softGlow);
+}
+.drma-welcome .drma-levels-curve-svg .dot{
+  fill: url(#drmaDotFill);
+  stroke: rgba(255,255,255,.75);
+  stroke-width: 1;
+  /* add a tiny inner highlight */
+  paint-order: stroke fill;
+}
+
+
+
+
+/* Make the dashboard lane wider only on this page */
+.drma-welcome .dashboard-row,
+.drma-welcome .dashboard-layout-row,
+.drma-welcome .dashboard-panel-row {
+  max-width: 1600px !important;   /* pick the width you want */
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Panels add side padding that constrains your card; remove it here */
+.drma-welcome .panel-body {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Let your article card span the full lane, then add its own small gutter */
+.drma-welcome .drma-article {
+  max-width: none !important;   /* stop the previous 1040px cap */
+  width: 100% !important;
+  padding-left: 24px;           /* gentle inner gutter so text doesn't hug edges */
+  padding-right: 24px;
+}
+
+/* (Optional) if your theme wraps content with another inner container */
+.drma-welcome .panel-body > .html,
+.drma-welcome .panel-body > .html > div {
+  overflow: visible !important;
+}
+
+.drma-theme.drma-theme--dark.drma-welcome {
+  background: transparent !important;
+}
+
+.drma-article{
+  box-sizing:border-box;
+  margin: 0 18px;         /* inset from both sides so both edges are visible */
+  padding: 0 0;           /* keep your current padding if you have it elsewhere */
+}
+
+
+/* Welcome page – tidy paragraph rhythm */
+.drma-welcome .drma-domains-text{
+  display: grid;                 /* consistent spacing */
+  grid-auto-rows: max-content;
+  row-gap: 6px;                  /* ~half the gap you had */
+}
+
+
+/* Slight space between paragraphs */
+.drma-welcome .drma-domains-text p + p {
+  margin-top: 6px !important;   /* tweak: 4px = tight, 6–8px = balanced */
+}
+
+/* Larger line spacing inside the paragraphs so the block breathes */
+.drma-welcome .drma-domains-text p{
+  line-height: 2.2 !important;   /* try 1.65–1.7 if you want fuller */
+}
+
+/* Small space after the heading, not a big block */
+.drma-welcome .drma-domains-text h2{
+  margin-bottom: 12px !important; /* tiny, natural */
+  line-height: 1.6;
+}
+
+
+/* Reusable tip bar */
+.drma-tip {
+  background: rgba(55,224,255,0.08);   /* soft teal wash */
+  border-left: 4px solid #37e0ff;      /* accent bar */
+  padding: 12px 16px;
+  margin: 12px 0;
+  border-radius: 6px;
+  color: #e8f4ff;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+.drma-tip {
+  background: rgba(55,224,255,0.08);
+  border: 1px solid rgba(141,233,255,0.35);
+  border-radius: 8px;
+  padding: 12px 16px;
+  box-shadow: 0 4px 12px rgba(6,14,24,0.4);
+}
+
+.drma-tip-title {
+  margin: 0 0 6px;
+  font-size: 1.1em;
+  font-weight: 700;
+  color: #8de9ff;
+}
+
+
+
+/* Radar */
+.drma-radar { overflow: visible; }
+.drma-radar-svg .ring { fill: none; stroke: rgba(255,255,255,.14); stroke-width: 1.5; }
+.drma-radar-svg .grid circle { fill: none; stroke: rgba(255,255,255,.06); stroke-dasharray: 2 6; }
+.drma-radar-svg .label { fill: #b9cdea; font-size: 12px; text-anchor: middle; }
+
+.drma-radar-svg .radar {
+  fill: url(#drmaAreaFillR);
+  stroke: url(#drmaCurveStrokeR);
+  stroke-width: 3;
+  vector-effect: non-scaling-stroke;
+}
+.drma-radar-svg .radar-dots circle {
+  fill: #c7f4ff;
+  stroke: #37e0ff;
+  stroke-width: 1;
+}
+
+.drma-radar-svg {
+  width: 90%;   /* shrink within its container */
+  height: auto;
+  max-width: 480px; /* cap the size */
+}
+
+
+/* Faint spokes under the radar */
+.drma-radar-svg .spokes line{
+  stroke: rgba(141, 233, 255, 0.18); /* faint teal; tweak alpha as needed */
+  stroke-width: 1;
+  stroke-linecap: round;
+}
+
+/* Slight space between paragraphs */
+.drma-welcome .drma-profile-text p + p {
+  margin-top: 6px !important;   /* tweakable */
+}
+
+/* Larger line spacing inside the paragraphs */
+.drma-welcome .drma-profile-text p {
+  line-height: 2.2 !important;
+}
+
+/* Small space after the heading */
+.drma-welcome .drma-profile-text h2 {
+  margin-bottom: 12px !important;
+  line-height: 1.6;
+}
+
+
+
+.drma-card label { cursor: auto; } /* prevent hand cursor on labels causing flips */
+.drma-choice input[type="radio"]:checked + span{
+  color:#042033;
+  background: linear-gradient(180deg, var(--teal,#37e0ff) 0%, var(--teal-2,#22b8e7) 100%);
+  border-color:#53e6ff;
+  box-shadow:0 2px 10px rgba(55,224,255,.25), inset 0 1px 0 rgba(255,255,255,.45);
+}
+.drma-choice:hover span{ border-color:#7ea3d6; }
+.drma-choice input[type="radio"]:focus-visible + span{ outline:2px solid #53e6ff; outline-offset:2px; }
+
+
+
+
+
+/* Label above the pills */
+.drma-back .drma-evidence-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #9fb6d9;
+  margin: 0 0 6px;
+}
+
+/* Choices row */
+.drma-back .drma-evidence .choices {
+  display: flex;
+  justify-content: space-between;  /* space evenly */
+  gap: 8px;
+}
+
+/* Each choice behaves like a pill button */
+.drma-back .drma-choice {
+  flex: 1 1 auto;                /* share space evenly */
+  display: flex;
+}
+
+.drma-back .drma-choice input {
+  position: absolute;
+  opacity: 0;
+}
+
+.drma-back .drma-choice span {
+  flex: 1;
+  text-align: center;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #cfe3ff;
+  background: rgba(111,139,184,0.18);
+  border: 1px solid rgba(126,163,214,0.35);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+/* Active state */
+.drma-back .drma-choice input:checked + span {
+  background: linear-gradient(180deg, #8de9ff, #37e0ff);
+  color: #042033;
+  border-color: #53e6ff;
+  box-shadow: 0 2px 8px rgba(55,224,255,.35);
+}
+
+
+
+/* Levels row = relative box */
+.drma-levels-container {
+  position: relative;
+  display: flex;
+  justify-content: center;   /* keep the level buttons centered */
+  align-items: center;
+  margin: 10px 0 20px;
+}
+
+/* Counter floats to the right edge */
+.drma-updated {
+  position: absolute;
+  right: 0;
+  font-size: 12px;
+  color: #cfe0ff;
+  opacity: .9;
+  white-space: nowrap;
+}
+
+/* container already exists in your markup */
+.drma-levels-container {
+  position: relative;
+  text-align: center;
+}
+
+/* center the buttons */
+.drma-levels { display: inline-flex; gap: 10px; }
+
+.drma-levels-container{ position:relative; text-align:center; }
+.drma-levels{ display:inline-flex; gap:10px; flex-wrap:wrap; justify-content:center; }
+.drma-levels-right{
+  position:absolute; right:0; top:50%; transform:translateY(-50%);
+  display:inline-flex; align-items:center; gap:10px;
+}
+.drma-updated{ color:#cfe0ff; font-size:12px; }
+
+/* Levels centered, with a right-side utility lane */
+.drma-levels-container{
+  position: relative;
+  text-align: center;
+  padding-right: 240px;      /* reserve room for counter + button */
+}
+.drma-levels{
+  display: inline-flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Right-side group */
+.drma-levels-right{
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+.drma-updated{ color:#cfe0ff; font-size:12px; }
+
+
+
+
+
+/* --- Levels row: center levels; right rail = text above button --- */
+.drma-levels-container{
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 6px 8px;
+}
+
+#drma_levels{
+  grid-column: 2;
+  justify-self: center;
+}
+
+/* FORCE a vertical stack on the right */
+#drma_levels_right{
+  grid-column: 3;
+  justify-self: end;
+
+  display: grid !important;       /* override any inline-flex */
+  grid-auto-flow: row;            /* stack */
+  justify-items: end;             /* right-align contents */
+  row-gap: 6px;                   /* space between text & button */
+  padding-right: 4px;
+  white-space: normal !important; /* undo any nowrap */
+}
+
+/* make sure both items participate in layout (not positioned) */
+#drma_levels_right > #drma_updated,
+#drma_levels_right > #drma_update_btn{
+  display: block !important;
+  position: static !important;
+  margin: 0;                      /* no inherited margins */
+}
+
+.drma-updated{
+  font-size: 12px;
+  line-height: 1.2;
+  color: #cfe0ff;
+  opacity: .9;
+}
+
+#drma_update_btn{
+  min-width: 84px;                /* stable width when text changes */
+}
+
+/* Narrow screens: stack the whole right rail under the levels */
+@media (max-width: 680px){
+  .drma-levels-container{ grid-template-columns: 1fr; row-gap: 8px; }
+  #drma_levels{ grid-column: 1; justify-self: center; }
+  #drma_levels_right{ grid-column: 1; justify-self: center; justify-items: center; }
+}
+
+
+
+.drma-lastupdate{
+  font-size: 11px;
+  line-height: 1.2;
+  color: #9fb6d9;
+  opacity: .75;
+}
+
+
+
+
+/* ---- Assessment page: reuse Welcome visuals ---- */
+.drma-assessment .drma-hero--frameless{
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  margin: 18px auto 6px;
+  max-width: 1040px;
+  text-align: center;
+}
+.drma-assessment .drma-hero--frameless h1{ color:#fff !important; margin:0 0 4px; font-weight:800; }
+.drma-assessment .drma-hero--frameless .drma-subtitle{ color:#dfe9ff; margin:0; }
+
+/* Single soft article surface */
+.drma-assessment .drma-article{
+  max-width: 1040px;
+  margin: 10px auto 28px;
+  padding: 18px 22px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(18,33,53,.82), rgba(14,26,43,.82));
+  border: 1px solid rgba(126,163,214,.22);
+  box-shadow: 0 8px 20px rgba(5,13,24,.4), inset 0 1px 0 rgba(255,255,255,.04);
+}
+.drma-assessment .drma-article h2{ color:#f3f8ff; margin:0 0 8px; font-weight:700; }
+.drma-assessment .drma-article p,
+.drma-assessment .drma-article li{ color:#e7f0ff; line-height:1.6; font-size:14px; }
+
+/* Make the panel container transparent on this page (like others) */
+.drma-assessment .dashboard-panel,
+.drma-assessment .dashboard-element,
+.drma-assessment .panel-body{
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  color: inherit !important;
+}
+
+/* Remove side padding Splunk adds so our article can control its own gutters */
+.drma-assessment .panel-body { padding-left: 0 !important; padding-right: 0 !important; }
+
+
+
+
+/* Radar panel fit + spacing */
+.chartjs-radar-root{
+  /* your viz sets this class on the root div */
+  height: 100%;
+  padding: 8px 10px;         /* breathing room from panel edges */
+}
+
+/* Make the panel that holds the chart feel consistent with article cards */
+.panel-element .chart,
+.panel-element .viz{
+  background: transparent;   /* let your dark gradient through */
+  border-radius: 14px;
+}
+
+/* Optional: nudge the title closer to the viz */
+.panel-head h3{
+  margin-bottom: 8px;
+}
+
+/* If Splunk adds extra padding around the canvas, tame it */
+.chartjs-radar-root canvas{
+  display: block;
+}
+
+
+
+/* Kill ONLY the inner box of the left text panel */
+.drma-assessment #intro_text .dashboard-element-html > .panel-body.html{
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* Make the left panel the same height as the radar (adjust if you change radar height) */
+.drma-assessment #intro_text .dashboard-panel{
+  min-height: 520px !important;
+}
+
+
+
+
+/* Assessment: remove inner box from the text panel only */
+.drma-assessment #intro_text .panel-title,
+.drma-assessment #intro_text .fieldset{
+  display: none !important;
+}
+
+.drma-assessment #intro_text .dashboard-element-html > .panel-body.html{
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  color: inherit !important;
+}
+
+/* Optional: make left panel as tall as the radar */
+.drma-assessment #intro_text .dashboard-panel{
+  min-height: 520px !important;
+}
+
+
+
+
+/* Strip ONLY the inner frame of the tagged panel */
+.drma-nochrome .panel-body,
+.drma-nochrome .panel-element,
+.drma-nochrome .panel-element-row,
+.drma-nochrome .dashboard-element {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Hide header inside that panel (if any) */
+.drma-nochrome .panel-head,
+.drma-nochrome .panel-title {
+  display: none !important;
+}
+
+/* Tighten spacing so text sits flush in the outer panel */
+.drma-nochrome .panel-body {
+  padding: 0 !important;
+  /* optional: match radar height */
+  /* min-height: 520px; */
+}
+
+
+/* Headings */
+.drma-h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 6px 0;
+  color: #fff; /* or #d9dee4 if you want muted */
+}
+
+/* Subtitle / body */
+.drma-subtitle {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #9caaba;
+  margin: 0;
+}
+
+
+
+
+
+/* Keep intro text panel same height as radar panel */
+#intro_text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* vertically center the text if it’s short */
+  height: 520px;             /* match the radar viz height */
+}
+
+/* Match section heading style */
+.drma-h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #dfe6f1;   /* softer white-blue used elsewhere */
+  margin-bottom: 6px;
+}
+
+/* Subtitle/description text */
+.drma-subtitle {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #9caaba;
+  margin: 0;
+}
+
+#intro_text .panel-body.html {
+  padding: 12px 18px;   /* slimmer padding */
+}
+
+
+
+
+
+/* Left description panel: align padding/typography with app */
+#intro_text .panel-body.html {
+  padding: 16px 22px 18px 22px;   /* match the “feel” of other panels */
+}
+
+/* Keep height in step with the radar panel */
+#intro_text {
+  height: 520px;                   /* same as viz height */
+  display: flex;
+}
+#intro_text .drma-panel-text {
+  align-self: flex-start;          /* text pins to top like other panels */
+  width: 100%;
+}
+
+/* Head + paragraph styles consistent with app */
+.drma-h2 {
+  margin: 2px 0 8px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #dfe6f1;
+  letter-spacing: .2px;
+}
+
+
+/* Reuse hero styles for intro panel */
+.drma-intro-panel-marker {
+  margin-left: 20px;   /* adjust spacing from left edge */
+}
+
+/* Ensure consistency with Assessment header */
+.drma-intro-panel-marker h1 {
+  font-size: 18px;        /* matches Assessment title */
+  font-weight: 600;
+  margin: 0 0 6px 0;
+  color: #fff;
+}
+
+.drma-intro-panel-marker .drma-subtitle {
+  font-size: 12px;
+  color: #c0c9d6;
+  margin: 0;
+}
+
+
+
+
+
+
+
+/* Report actions row */
+.drma-report-actions{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:10px 14px; border-radius:10px;
+  background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02));
+  box-shadow: inset 0 0 0 1px rgba(126,163,214,.25), 0 6px 18px rgba(0,0,0,.45);
+  margin-top:8px;
+}
+.drma-report-left .drma-h2{ margin:0 0 4px; }
+.drma-report-left .drma-subtitle{ margin:0; opacity:.9; }
+
+.drma-report-buttons{ display:flex; gap:10px; }
+.drma-btn{
+  padding:8px 12px; border-radius:10px; border:1px solid rgba(126,163,214,.35);
+  background: rgba(255,255,255,.07); color:#e9f2ff; cursor:pointer;
+}
+.drma-btn:hover{ background: rgba(255,255,255,.12); }
+.drma-btn--subtle{ background: rgba(255,255,255,.04); }
+
+.drma-email-help{ margin:10px 12px 0; font-size:13px; color:#cfe0ff; }
+.drma-email-help a{ color:#9ed1ff; text-decoration:underline; }
+
+
+
+
+
+/* Bottom "Report & export" panel layout */
+#report_panel .drma-hero--frameless {
+  max-width: none !important;  /* remove the 1040px cap */
+  width: 98% !important;      /* span the whole panel */
+  margin: 0 !important;        /* stop auto-centering */
+  text-align: left !important; /* left-align text */
+}
+
+/* Make the actions bar a left|right flex row */
+#report_panel #drma_report_actions {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 16px;
+}
+
+/* Left text block */
+#report_panel #drma_report_actions .drma-report-left {
+  flex: 1 1 auto;              /* take remaining space */
+  min-width: 0;
+}
+
+/* Buttons on the right */
+#report_panel #drma_report_actions .drma-report-buttons {
+  margin-left: auto !important; /* push to right edge */
+  display: flex !important;
+  gap: 10px !important;
+  justify-content: flex-end !important;
+}
+
+
+
+
+
+
+
+/* ================================
+   Left-panel overview narrative
+   ================================ */
+.drma-theme--dark #drma-overview-html {
+  color: #cfe0ff;                 /* base text */
+  line-height: 1.5;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+.drma-theme--dark #drma-overview-html .drma-subtitle {
+  color: #cfe0ff;
+  opacity: .95;
+  margin: 0 0 10px;
+}
+
+.drma-theme--dark #drma-overview-html .drma-weak-axis {
+  margin: 14px 0 10px;
+  padding: 10px 12px;
+  border-left: 2px solid rgba(126,163,214,.35);
+  background: rgba(255,255,255,.02);
+  border-radius: 8px;
+}
+
+.drma-theme--dark #drma-overview-html .drma-weak-axis h3 {
+  margin: 0 0 4px;
+  font-size: 16px;
+  color: #d6e7ff;
+}
+
+.drma-theme--dark #drma-overview-html .drma-weak-axis h4 {
+  margin: 8px 0 4px;
+  font-size: 13px;
+  color: #9fb6d9;
+  text-transform: none;
+  letter-spacing: .2px;
+}
+
+.drma-theme--dark #drma-overview-html p {
+  margin: 0 0 6px;
+  color: #cfe0ff;
+  opacity: .92;
+}
+
+/* bullets generated by SPL */
+.drma-theme--dark #drma-overview-html .drma-bullets {
+  margin: 6px 0 6px 18px;
+  padding: 0;
+  list-style: disc;
+  color: #cfe0ff;
+  opacity: .95;
+}
+.drma-theme--dark #drma-overview-html .drma-bullets li { margin: 2px 0; }
+
+/* inline quote + refs */
+.drma-theme--dark #drma-overview-html .drma-quote {
+  font-style: italic;
+  color: #e7f1ff;
+  opacity: 1;
+}
+.drma-theme--dark #drma-overview-html .drma-ref {
+  color: #8fc5ff;
+}
+
+/* references list */
+.drma-theme--dark #drma-overview-html .drma-refs {
+  margin: 12px 0 0 18px;
+  padding: 0;
+  color: #cfe0ff;
+}
+.drma-theme--dark #drma-overview-html .drma-refs a {
+  color: #9bd1ff;
+  text-decoration: none;
+}
+.drma-theme--dark #drma-overview-html .drma-refs a:hover {
+  text-decoration: underline;
+}
+
+/* subtle text for “missing from lookup” notices */
+.drma-theme--dark #drma-overview-html .drma-missing,
+.drma-theme--dark #drma-overview-html p:has(> .drma-missing) {
+  color: #9fb6d9;
+  opacity: .85;
+}
+
+/* tighten top spacing under “Some title” */
+.drma-theme--dark .drma-intro-panel-marker #drma-overview-html {
+  margin-top: 6px;
+}
+
+
+.drma-theme--dark #drma-overview-html .drma-weak-axis {
+  margin: 14px 0 10px;
+  padding: 10px 12px;
+  border-left: 2px solid rgba(126,163,214,.35);
+  background: rgba(255,255,255,.02);
+  border-radius: 8px;
+}
+
+
+
+
+
+
+/* Kill “box” styling for the narrative chunks */
+.drma-theme--dark #drma-overview-html .drma-weak-axis,
+.drma-theme--dark #drma-overview-html section.drma-weak-axis {
+  background: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 16px 0 !important;
+}
+
+/* Make the narrative left-aligned even if the hero is centered */
+.drma-theme--dark .drma-intro-panel-marker #drma-overview-html {
+  text-align: left;
+}
+
+
+
+/* Narrative overview panel spacing */
+#drma-overview-html {
+  padding: 0 24px 16px 24px;   /* left/right 24px, bottom 16px */
+}
+
+/* Optional: tighten section spacing */
+#drma-overview-html .drma-weak-axis {
+  margin: 20px 0;
+}
+
+/* Headline should stand out a bit */
+#drma-overview-html > .drma-subtitle {
+  display: block;
+  margin-bottom: 20px;
+  color: #cfe0ff;  /* softer blue */
+}
+
+
+
+.drma-gate.drma-hero--frameless{
+  background: transparent !important;
+  box-shadow: none !important;
+  border: 0 !important;
+  padding: 0 !important;  /* optional */
+  margin: 8px 0 !important; /* keep your gap */
+}
+
+/* utility */
+.drma-center { text-align: center; }
+
+
+
+/* DRMA standalone fallback (outside Splunk) */
+html, body { margin: 0; background: #0b1729; color: #d9e4ef; }
+.drma-theme.drma-theme--dark {
+  background:
+    radial-gradient(1200px 600px at 50% -200px, rgba(14,26,42,.55) 0%, rgba(11,23,41,0) 60%),
+    #0b1729;
+  min-height: 100vh;
+  padding: 16px;
+  box-sizing: border-box;
+}
+.drma-article { max-width: 1200px; margin: 0 auto; }
+
+
+/* Tiny top nav strip for the standalone web app */
+.drma-nav {
+  background: linear-gradient(90deg, #0b1729 0%, #10253f 100%);
+  border-bottom: 1px solid rgba(126, 163, 214, 0.35);
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 13px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+}
+
+.drma-nav__title {
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #e9f2ff;
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.drma-nav__spacer {
+  flex: 1 1 auto;
+}
+
+.drma-nav__link {
+  color: #cfe0ff;
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+.drma-nav__link:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.drma-nav__link--active {
+  opacity: 1;
+  font-weight: 600;
+}

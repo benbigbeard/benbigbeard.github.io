@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Digital Resilience Maturity Overview</title>
+  <link rel="stylesheet" href="drma.css" />
+  <style>
+    html, body { margin:0; background:#0b1729; color:#d9e4ef; }
+    .drma-theme.drma-theme--dark {
+      background: radial-gradient(1200px 600px at 50% -200px, rgba(14,26,42,.55) 0%, rgba(11,23,41,0) 60%), #0b1729;
+      min-height:100vh; box-sizing:border-box; padding:16px;
+    }
+
+/* Shell: let it go full width again */
+.drma-shell {
+  max-width: none;
+  margin: 0 auto;
+  padding: 0 0px;
+}
+
+/* Inner blocks: fill the shell */
+.drma-article,
+.drma-select-container,
+.drma-levels-container,
+#drma_sections {
+  max-width: 100%;
+  margin: 0;
+}
+
+    .drma-link { display:inline-block; margin-bottom:8px; }
+    .drma-field label { display:block; margin-bottom:6px; font-weight:600; }
+    .drma-input { min-width:280px; }
+    .drma-select-group { display:flex; flex-wrap:wrap; gap:8px; }
+    .drma-radio { display:inline-flex; align-items:center; gap:8px; border:1px solid rgba(126,163,214,.35); background:rgba(255,255,255,.04); color:#e9f2ff; border-radius:999px; padding:8px 12px; cursor:pointer; }
+    .drma-radio input { accent-color:#37e0ff; }
+    .drma-levels { display:flex; gap:8px; flex-wrap:wrap; }
+    .drma-level-btn { border:1px solid rgba(126,163,214,.35); background:rgba(255,255,255,.04); color:#e9f2ff; border-radius:10px; padding:8px 12px; cursor:pointer; font-weight:600; }
+    .drma-level-btn.active { background:linear-gradient(180deg,#37e0ff,#22b8e7); color:#042033; border-color:#53e6ff; }
+    .drma-intro-panel-marker { margin-top:16px; }
+    .drma-select-title { margin:0 0 8px; }
+    .drma-subtitle { margin:0 0 12px; color:#b9cdea; }
+    .drma-note { color:#b9cdea; font-size:13px; }
+    .drma-actions { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+    .drma-btn { background:linear-gradient(180deg,#173a61,#112a49); color:#dbe9ff; border:1px solid rgba(111,139,184,.35); border-radius:10px; padding:10px 14px; font-weight:600; cursor:pointer; }
+        /* Green CTA to match Start assessment */
+    #drma_submit {
+      background: linear-gradient(180deg, #2fe57d, #16b75d) !important;
+      border-color: rgba(99, 255, 170, 0.85) !important;
+      color: #02160a !important;
+      box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.2),
+        0 10px 28px rgba(0, 0, 0, 0.5);
+    }
+
+    #drma_submit:hover {
+      filter: brightness(1.05);
+      transform: translateY(-1px);
+    }
+    .drma-input-text { width:min(420px,90%); padding:10px 12px; border-radius:10px; border:1px solid rgba(126,163,214,.35); background:rgba(255,255,255,.04); color:#e9f2ff; }
+
+        /* Modal for showing generated ID */
+    .drma-modal-backdrop{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.65);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:1000;
+    }
+    .drma-modal{
+      background:#0f1b2d;
+      border-radius:12px;
+      border:1px solid rgba(126,163,214,.6);
+      box-shadow:0 18px 40px rgba(0,0,0,0.7);
+      max-width:420px;
+      width:90%;
+      padding:16px 18px 14px;
+      color:#e9f2ff;
+      font-size:14px;
+    }
+    .drma-modal h3{
+      margin:0 0 6px;
+      font-size:16px;
+    }
+    .drma-modal p{
+      margin:0 0 10px;
+      color:#cfe0ff;
+      font-size:13px;
+    }
+    .drma-modal-id{
+      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+      padding:6px 8px;
+      border-radius:8px;
+      border:1px solid rgba(126,163,214,0.55);
+      background:rgba(3,13,28,0.9);
+      word-break:break-all;
+      margin-bottom:10px;
+      font-size:13px;
+    }
+    .drma-modal-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      justify-content:flex-end;
+      margin-top:6px;
+    }
+    .drma-btn--ghost{
+      background:transparent;
+      box-shadow:none;
+    }
+
+    /* Cards Grid */
+    .drma-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:14px; }
+
+    /* Flip cards */
+    .card { perspective:1000px; cursor:pointer; }
+    .card-inner {
+      position:relative; width:100%; min-height:280px; height:100%;
+      transform-style:preserve-3d; transition:transform 0.6s; border-radius:12px;
+    }
+    .card.flipped .card-inner { transform:rotateY(180deg); }
+    .card-front, .card-back {
+      position:absolute; inset:0; backface-visibility:hidden; border-radius:12px;
+      display:flex; flex-direction:column; background:#0f1b2d;
+      border:1px solid rgba(111,139,184,.35); box-shadow:0 6px 18px rgba(6,14,24,.6);
+    }
+    .card-back { background:#112a49; transform:rotateY(180deg); }
+    .card .head{display:flex;align-items:center;justify-content:space-between;padding:12px 14px 4px}
+    .card .title{font-weight:700;color:#e9f4ff}
+    .card .meta{font-size:12px;color:#9fb6d9}
+    .card .body{padding:0 14px 12px;color:#cddcf1;font-size:13px;line-height:1.4;overflow:auto}
+    .card .foot{margin-top:auto;border-top:1px solid rgba(126,163,214,.35);display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 12px;background:linear-gradient(90deg,rgba(133,198,255,.15),rgba(4,32,51,0))}
+    .pill{font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;border:1px solid #64e0ff;background:linear-gradient(180deg,#bff2ff,#8de9ff);color:#032133}
+        .pill-level{
+      min-width:32px;
+      padding:4px 0;
+      text-align:center;
+    }
+
+    .pill-level-1{
+      background:linear-gradient(180deg,#cfe9ff,#9fd2ff);
+      border-color:#8cc4ff;
+    }
+    .pill-level-2{
+      background:linear-gradient(180deg,#bfe3ff,#86c6ff);
+      border-color:#6fb6ff;
+    }
+    .pill-level-3{
+      background:linear-gradient(180deg,#afddff,#6ebeff);
+      border-color:#56abff;
+    }
+    .pill-level-4{
+      background:linear-gradient(180deg,#9fd7ff,#5ab5ff);
+      border-color:#3f9fff;
+    }
+    .pill-level-5{
+      background:linear-gradient(180deg,#8fd1ff,#46adff);
+      border-color:#268fff;
+    }
+
+    .drma-radio--custom {
+  max-width: 100%;
+}
+
+.drma-input-text--inline {
+  width: 220px;
+  max-width: 60vw;
+}
+
+    /* Back-face toggles */
+        .toggle-group {
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:8px;
+    }
+    .toggle {
+      border:1px solid rgba(126,163,214,.35);
+      background:rgba(255,255,255,.06);
+      color:#e9f2ff; border-radius:999px; padding:8px 12px;
+      font-weight:700; font-size:12px; cursor:pointer;
+      user-select:none;
+      text-align:center;
+    }
+    .toggle[data-val="no"]{
+      grid-column:1 / 3;   /* span both columns, new row */
+    }
+    .toggle[data-val="yes_splunk"].active { background:linear-gradient(180deg,#37e0ff,#22b8e7); color:#042033; border-color:#53e6ff; }
+    .toggle[data-val="yes_other"].active  { background:linear-gradient(180deg,#94f2b7,#35d487); color:#062b1b; border-color:#6cf0a5; }
+    .toggle[data-val="no"].active         { background:linear-gradient(180deg,#ff9aa8,#ff5d75); color:#2b0810; border-color:#ff8ea0; }
+
+    details.group{border-top:1px solid rgba(126,163,214,.25);padding-top:8px; margin-top:16px}
+    summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;color:#e8f2ff}
+    summary::-webkit-details-marker{display:none}
+    .chev{display:inline-block;transition:transform .2s}
+    details[open] .chev{transform:rotate(90deg)}
+
+    .drma-overview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 10px;
+  margin-bottom: 8px;
+}
+@media (max-width: 768px){
+  .drma-overview-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .drma-overview-header .drma-hero__id-link {
+    align-self: stretch;
+    text-align: center;
+  }
+}
+
+    .drma-hero{
+      background:#0f1b2d;
+      border-radius:14px;
+      border:1px solid rgba(126,163,214,.35);
+      box-shadow:0 10px 28px rgba(3,8,18,.8);
+      padding:16px 18px 14px;
+      margin-top:10px;
+    }
+
+    .drma-hero__top{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:12px;
+      margin-bottom:12px;
+    }
+
+    .drma-hero__title{
+      margin:0 0 4px;
+      font-size:18px;
+      font-weight:650;
+    }
+
+    .drma-hero__subtitle{
+      margin:0;
+      font-size:13px;
+      color:#b9cdea;
+    }
+
+    .drma-hero__id-link{
+      font-size:13px;
+      color:#7fc8ff;
+      text-decoration:none;
+      border-radius:999px;
+      padding:6px 10px;
+      border:1px solid rgba(126,163,214,.45);
+      background:rgba(7,20,38,.9);
+      align-self:flex-start;
+    }
+
+    .drma-hero__body{
+      display:flex;
+      flex-wrap:wrap;
+      gap:16px;
+      margin-top:8px;
+    }
+
+    .drma-hero__col{
+      flex:1 1 260px;
+      min-width:0;
+    }
+
+    .drma-hero__col--side{
+      max-width:320px;
+    }
+
+    .drma-hero__side-title{
+      margin:0 0 6px;
+      font-size:14px;
+      font-weight:600;
+    }
+
+    .drma-hero__summary{
+      margin-top:10px;
+      font-size:12px;
+    }
+
+    /* Tidy the sub-blocks when they live inside the hero */
+    .drma-hero .drma-select-container{
+      margin:0;
+    }
+
+    .drma-hero .drma-select-title{
+      font-size:14px;
+      margin-bottom:6px;
+    }
+
+    .drma-levels-container{
+      margin-top:4px;
+    }
+
+    @media (max-width: 768px){
+      .drma-hero__top{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+      .drma-hero__id-link{
+        align-self:stretch;
+        text-align:center;
+      }
+    }
+
+    .drma-step3-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.drma-step3-header-main {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.drma-step3-header-levels {
+  flex: 0 0 auto;
+  max-width: 280px;
+}
+
+@media (max-width: 768px){
+  .drma-step3-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .drma-step3-header-levels {
+    max-width: none;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="drma-nav">
+    <span class="drma-nav__title">DRMA</span>
+    <a href="welcome.html" class="drma-nav__link">Welcome</a>
+    <a href="content.html" class="drma-nav__link drma-nav__link--active">Overview</a>
+    <a href="assessment.html" class="drma-nav__link">Assessment</a>
+  </div>
+
+  <div class="drma-theme drma-theme--dark">
+    <div class="drma-shell">
+
+      <!-- Hero config panel -->
+<!-- Page header (outside the box) -->
+<div class="drma-overview-header">
+  <div>
+    <h1 class="drma-hero__title">Configure your assessment</h1>
+    <p class="drma-hero__subtitle">
+      Choose your business objective, operational outcome and the maturity level in scope.
+    </p>
+  </div>
+  <a href="#" id="drma_assess_toggle" class="drma-hero__id-link">
+    Use an existing assessment ID
+  </a>
+</div>
+
+<!-- Hero config panel (box now just holds controls) -->
+<div class="drma-hero drma-article">
+  <!-- Existing ID panel stays in the box if you like -->
+  <div id="drma_assess_panel" style="display:none; margin-top:8px;">
+    <div class="drma-field">
+      <label for="drma_assessment_input">Enter an assessment ID</label>
+      <div class="drma-actions">
+        <input
+          id="drma_assessment_input"
+          class="drma-input-text"
+          placeholder="Paste an ID you have saved"
+        />
+        <button id="drma_assessment_load" class="drma-btn drma-btn--ghost">Load</button>
+      </div>
+      <p class="drma-note">
+        The ID encodes your selections. Paste one you have copied earlier to reload the same answers.
+      </p>
+    </div>
+  </div>
+
+  <div class="drma-hero__body">
+    <!-- Left: business and operational choices -->
+    <div class="drma-hero__col drma-hero__col--primary">
+      <!-- Business -->
+      <div id="drma_business" class="drma-select-container drma-intro-panel-marker">
+        <h2 class="drma-select-title"><b>Step 1</b> - What is your business objective</h2>
+        <br/>
+        <div class="drma-select-group" role="radiogroup" aria-label="Business outcome"></div>
+      </div>
+
+      <br/>
+      <hr class="drma-rule" />
+      <br/>
+
+      <!-- Operational -->
+      <div id="drma_operational" class="drma-select-container drma-intro-panel-marker" style="margin-top:14px;">
+        <h2 class="drma-select-title"><b>Step 2</b> - What is your main operational outcome</h2>
+        <br/>
+        <div class="drma-select-group" role="radiogroup" aria-label="Operational outcome"></div>
+        <p class="drma-note" id="dora_hint" style="display:none; margin-top:6px;">
+          DORA selected - the "Compliance / Assurance" business objective will be applied.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Step 3: practices box -->
+<div class="drma-hero drma-article" style="margin-top:20px;">
+  <div class="drma-step3-header">
+    <div class="drma-step3-header-main">
+      <h2 class="drma-select-title"><b>Step 3</b> - Review practices in scope</h2>
+      <p class="drma-subtitle" id="drma_step3_hint">
+        Complete Step 1 and 2 above to see practices.
+      </p>
+    </div>
+    <div class="drma-step3-header-levels">
+      <h3 class="drma-hero__side-title">Level in scope</h3>
+      <p class="drma-note" style="margin:0 0 6px;">
+        Select the level of maturity you would like to measure against.
+      </p>
+      <div class="drma-levels-container drma-levels-container--inline">
+        <div id="drma_levels" class="drma-levels"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="drma_sections"></div>
+</div>
+
+      <!-- Step 4: save and continue -->
+      <div id="drma_step4" class="drma-select-container drma-intro-panel-marker" style="margin-top:24px;">
+        <h2 class="drma-select-title">Submit results for analysis</h2>
+        <div class="drma-actions">
+          <button id="drma_submit" class="drma-btn">Submit &amp; Continue → Assessment</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+  (function(){
+    // === CSV paths ===
+    const LOOKUPS = {
+      PRACTICES: 'data/drma_practices.csv',
+      DORA:      'data/drma_dora_cards.csv'
+    };
+
+    // === State & helpers ===
+    const $  = (s, r=document)=>r.querySelector(s);
+    const $$ = (s, r=document)=>Array.from(r.querySelectorAll(s));
+    const q = new URLSearchParams(location.search);
+    const idFromUrl = q.get('a') || (/#a=([^&]+)/.exec(location.hash)||[])[1] || '';
+    const key        = id => `drma:${id}`;
+    const answersKey = id => `drma_answers:${id}`;
+
+    let PRACTICES = [], DORA_ONLY = [];
+    let workingId = idFromUrl || '';
+
+    // Business / Operational fixed options
+    const BUSINESS = [
+      "Improve Service Uptime",
+      "Accelerate Incident Response",
+      "Reduce Regulatory Risk",
+      "Lower Operating Cost",
+      "Compliance / Assurance"
+    ];
+    const OPERATIONAL = [
+      "Payments & Billing",
+      "User Authentication",
+      "Data Backup & Restore",
+      "Public Website / Apps",
+      "Third-Party Integrations"
+      // "DORA"
+    ];
+
+    let state =
+      (workingId && localStorage.getItem(key(workingId)))
+        ? JSON.parse(localStorage.getItem(key(workingId)))
+        : {
+            id: workingId,
+            when: new Date().toISOString(),
+            level: 1,
+            business: '',
+            businessCustom: '',
+            operational: '',
+            operationalCustom: ''
+          };
+
+    // Make sure new fields exist on older saved objects
+    if (!('businessCustom' in state))    state.businessCustom = '';
+    if (!('operationalCustom' in state)) state.operationalCustom = '';
+
+    // answers per assessment { [short_id]: 'yes_splunk'|'yes_other'|'no' }
+    function loadAnswers(){
+      if(!workingId) return {};
+      try { return JSON.parse(localStorage.getItem(answersKey(workingId))||'{}'); }
+      catch { return {}; }
+    }
+    function saveAnswers(obj){
+      if(!workingId) return;
+      localStorage.setItem(answersKey(workingId), JSON.stringify(obj||{}));
+    }
+    let answers = loadAnswers();
+
+    function persist(){
+      if(!workingId) return;
+      state.id   = workingId;
+      state.when = new Date().toISOString();
+      localStorage.setItem(key(workingId), JSON.stringify(state));
+    }
+
+    function escapeHtml(s){
+      return String(s||'').replace(/[&<>"']/g, c => ({
+        '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+      })[c]);
+    }
+
+    // === CSV loader (robust) ===
+    async function loadCSV(path){
+      if(location.protocol==='file:'){
+        console.warn('Serve via http(s) to load CSVs');
+        return [];
+      }
+      const res = await fetch(path,{cache:'no-store'});
+      if(!res.ok) return [];
+      return parseCSV(await res.text());
+    }
+
+    function parseCSV(text){
+      const src = text.replace(/^\uFEFF/, '');
+      const rows = [];
+      let row = [], field = '', inQuotes = false;
+
+      for(let i=0;i<src.length;i++){
+        const c = src[i], n = src[i+1];
+        if(inQuotes){
+          if(c==='"' && n=== '"'){ field+='"'; i++; }
+          else if(c === '"'){ inQuotes = false; }
+          else { field += c; }
+        } else {
+          if(c === '"'){ inQuotes = true; }
+          else if(c === ','){ row.push(field); field=''; }
+          else if(c === '\n'){ row.push(field); rows.push(row); row=[]; field=''; }
+          else if(c === '\r'){ /* ignore */ }
+          else { field += c; }
+        }
+      }
+      if(field.length || row.length){ row.push(field); rows.push(row); }
+      if(!rows.length) return [];
+      const headers = rows.shift().map(h=>h.trim());
+      return rows
+        .filter(r => r.some(x => x && String(x).trim().length))
+        .map(r => {
+          const o = {};
+          headers.forEach((h,i)=> o[h] = (r[i] ?? '').trim() );
+          return o;
+        });
+    }
+
+    function isDora(){ return state.operational === 'DORA'; }
+
+    // Stable sorting for deck so encoding and decoding line up
+    function sortedDeck(useDoraFlag){
+      const deck = (useDoraFlag === 'D') ? DORA_ONLY : PRACTICES;
+      return deck.slice().sort((a,b)=>{
+        if (a.axis !== b.axis) return a.axis.localeCompare(b.axis);
+        return String(a.short_id).localeCompare(String(b.short_id));
+      });
+    }
+
+    // Encode current state and answers into a URL safe code
+    function encodeCurrentState(){
+      if (!state.business || !state.operational) return null;
+
+      const isD = isDora();
+      const deck = sortedDeck(isD ? 'D' : 'P');
+
+      const answersArray = deck.map(pr => {
+        const v = answers[pr.short_id] || 'no';
+        return (v === 'yes_splunk' || v === 'yes_other' || v === 'no') ? v : 'no';
+      });
+
+      let bIdx = BUSINESS.indexOf(state.business);
+      let oIdx = OPERATIONAL.indexOf(state.operational);
+
+      const payload = {
+        v: 1,
+        d: isD ? 'D' : 'P',
+        b: bIdx,
+        o: oIdx,
+        l: state.level || 1,
+        a: answersArray
+      };
+
+      // Include custom labels if set
+      if (state.businessCustom && state.businessCustom.trim()){
+        payload.b = -1;
+        payload.b_custom = state.businessCustom.trim();
+      }
+      if (state.operationalCustom && state.operationalCustom.trim()){
+        payload.o = -1;
+        payload.o_custom = state.operationalCustom.trim();
+      }
+
+      const json = JSON.stringify(payload);
+      const b64 = btoa(json)
+        .replace(/=+$/,'')
+        .replace(/\+/g,'-')
+        .replace(/\//g,'_');
+      return b64;
+    }
+
+    // Decode a code into state and answers
+    function decodeIntoState(code){
+      try{
+        const json = atob(code.replace(/-/g,'+').replace(/_/g,'/'));
+        const payload = JSON.parse(json);
+        if (!payload || payload.v !== 1) return false;
+
+        const isD = payload.d === 'D';
+
+        state.businessCustom    = payload.b_custom || '';
+        state.operationalCustom = payload.o_custom || '';
+
+        state.business    = BUSINESS[payload.b] || '';
+        state.operational = OPERATIONAL[payload.o] || '';
+
+        if (state.businessCustom){
+          state.business = state.businessCustom;
+        }
+        if (state.operationalCustom){
+          state.operational = state.operationalCustom;
+        }
+
+        state.level   = payload.l || 1;
+        workingId     = code;
+
+        // Rebuild answers map from array
+        answers = {};
+        const deck = sortedDeck(isD ? 'D' : 'P');
+        (payload.a || []).forEach((val, idx)=>{
+          const pr = deck[idx];
+          if (!pr) return;
+          if (val === 'yes_splunk' || val === 'yes_other' || val === 'no'){
+            answers[pr.short_id] = val;
+          }
+        });
+
+        persist();
+        saveAnswers(answers);
+        return true;
+      } catch(e){
+        console.error('Failed to decode code', e);
+        return false;
+      }
+    }
+
+    // Previous assessments toggle
+    $('#drma_assess_toggle').addEventListener('click', e=>{
+      e.preventDefault();
+      const p = $('#drma_assess_panel');
+      p.style.display = p.style.display === 'none' ? 'block' : 'none';
+    });
+
+    // Levels
+    function renderLevels(){
+      const container = document.querySelector('.drma-levels-container');
+      container.style.display = isDora() ? 'none' : '';
+
+      const box = document.getElementById('drma_levels');
+      box.innerHTML = '';
+      if (isDora()) return;
+
+      for (let i = 1; i <= 5; i++) {
+        const b = document.createElement('button');
+        b.className = 'drma-level-btn' + (i === (state.level||1) ? ' active' : '');
+        b.textContent = i;
+        b.setAttribute('aria-pressed', i === (state.level||1));
+        b.onclick = () => {
+          state.level = i;
+          persist();
+          renderLevels();
+          renderSections();
+        };
+        box.appendChild(b);
+      }
+    }
+
+    // Render radios with extra "Other" option
+   function renderRadios(container, options, group){
+  const host = document.querySelector(container + ' .drma-select-group');
+
+  const customRadioId = group + '_custom_radio';
+  const customInputId = group + '_custom_text';
+  const isBusiness    = (group === 'business');
+
+  let html = options.map(opt =>
+    `<label class="drma-radio">
+       <input type="radio" name="${group}" value="${escapeHtml(opt)}">
+       <span>${escapeHtml(opt)}</span>
+     </label>`
+  ).join('');
+
+  html += `
+    <label class="drma-radio drma-radio--custom">
+      <input type="radio" name="${group}" value="__custom" id="${customRadioId}">
+      <span>Other:</span>
+      <input type="text"
+             id="${customInputId}"
+             class="drma-input-text drma-input-text--inline"
+             placeholder="${isBusiness ? 'Describe your business objective' : 'Describe your operational outcome'}" />
+    </label>
+  `;
+
+  host.innerHTML = html;
+
+  // Restore selection from state
+  const current      = state[group] || '';
+  const storedCustom = isBusiness ? (state.businessCustom || '') : (state.operationalCustom || '');
+  const idx          = options.indexOf(current);
+
+  if (idx >= 0){
+    host.querySelectorAll(`input[name="${group}"]`).forEach(inp => {
+      if (inp.value === current) inp.checked = true;
+    });
+  } else if (current || storedCustom){
+    const cr = document.getElementById(customRadioId);
+    const ci = document.getElementById(customInputId);
+    if (cr) cr.checked = true;
+    if (ci) ci.value = storedCustom || current;
+  }
+
+  // Radio change handlers
+  host.querySelectorAll(`input[name="${group}"]`).forEach(inp => {
+    inp.onchange = () => {
+      if (inp.value === '__custom'){
+        const ci = document.getElementById(customInputId);
+        const text = (ci && ci.value ? ci.value : '').trim();
+        if (isBusiness){
+          state.business       = text;
+          state.businessCustom = text;
+        } else {
+          state.operational       = text;
+          state.operationalCustom = text;
+        }
+      } else {
+        if (isBusiness){
+          state.business       = inp.value;
+          state.businessCustom = '';
+        } else {
+          state.operational       = inp.value;
+          state.operationalCustom = '';
+        }
+        const ci = document.getElementById(customInputId);
+        if (ci) ci.value = '';
+      }
+
+      if (!isBusiness){
+        const isD = inp.value === 'DORA';
+        $('#dora_hint').style.display = isD ? 'block' : 'none';
+        if (isD && state.business !== 'Compliance / Assurance'){
+          state.business       = 'Compliance / Assurance';
+          state.businessCustom = '';
+          // sync business radios
+          $$('#drma_business input[name="business"]').forEach(r => {
+            r.checked = (r.value === 'Compliance / Assurance');
+          });
+          const bc = document.getElementById('business_custom_text');
+          if (bc) bc.value = '';
+        }
+      }
+
+      persist();
+      renderLevels();
+      renderSections();
+    };
+  });
+
+  // Single input handler: typing auto selects "Other" and updates state
+  const ci = document.getElementById(customInputId);
+  if (ci){
+    ci.addEventListener('input', () => {
+      const text = ci.value.trim();
+      const cr   = document.getElementById(customRadioId);
+
+      // If there is text, select the custom option
+      if (text && cr && !cr.checked){
+        cr.checked = true;
+      }
+
+      if (text){
+        if (isBusiness){
+          state.business       = text;
+          state.businessCustom = text;
+        } else {
+          state.operational       = text;
+          state.operationalCustom = text;
+          // custom text is never "DORA", so hide the DORA hint
+          $('#dora_hint').style.display = 'none';
+        }
+      } else {
+        // if cleared, just clear the custom label
+        if (isBusiness){
+          state.businessCustom = '';
+        } else {
+          state.operationalCustom = '';
+        }
+      }
+
+      persist();
+      renderLevels();
+      renderSections();
+    });
+  }
+}
+
+    function normPractice(r){
+      return {
+        short_id: r.short_id || r.practice_id || '',
+        id:       r.practice_id || r.short_id || '',
+        axis:     (r.domain ? String(r.domain).trim() : 'General'),
+        level:    +(r.level || 1),
+        title:    r.title || '',
+        desc:     r.description || ''
+      };
+    }
+
+    function deckForCurrent(){
+      return state.operational === 'DORA' ? DORA_ONLY : PRACTICES;
+    }
+
+    function visibleDeck(){
+      const deck = deckForCurrent();
+      return isDora() ? deck : deck.filter(r => r.level <= (state.level || 1));
+    }
+
+    function groupByAxis(rows){
+      const g = {};
+      rows.forEach(r => (g[r.axis] = g[r.axis] || []).push(r));
+      return Object.entries(g).sort((a,b)=>a[0].localeCompare(b[0]));
+    }
+
+    function setAnswer(shortId, value){
+      answers[shortId] = value;
+      saveAnswers(answers);
+    }
+
+    function labelFor(v){
+      return v==='yes_splunk' ? 'Yes — Splunk' :
+             v==='yes_other'  ? 'Yes — Other'  :
+             v==='no'         ? 'No' : '';
+    }
+
+function renderSections(){
+  const host = $('#drma_sections');
+  const hint = $('#drma_step3_hint');
+  if (!host) return;
+
+  // Nothing chosen yet
+  if (!(state.business && state.operational)){
+    host.innerHTML = '';
+    if (hint){
+      hint.textContent = 'Complete Step 1 and 2 above to see practices.';
+    }
+    return;
+  }
+
+  const rows = visibleDeck();
+
+  // No rows for this selection
+  host.innerHTML = '';
+  if (!rows.length){
+    if (hint){
+      hint.textContent = 'No practices are in scope for this selection.';
+    }
+    return;
+  }
+
+  // We have practices in scope
+  if (hint){
+    hint.textContent = 'Work through the practices below and capture whether you have evidence.';
+  }
+
+  groupByAxis(rows).forEach(([axis, items])=>{
+    const det = document.createElement('details');
+    det.className = 'group';
+    det.open = true;
+    det.innerHTML =
+      `<summary><span class="chev">▶</span><span class="pill">${items.length}</span><strong>${axis}</strong></summary>`;
+    const grid = document.createElement('div');
+    grid.className = 'drma-grid';
+    det.appendChild(grid);
+
+    items.forEach(it=>{
+      const div = document.createElement('div');
+      div.className = 'card';
+      const selected = answers[it.short_id] || '';
+      div.innerHTML = `
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="head">
+              <div>
+                <div class="title">${escapeHtml(it.title)}</div>
+                <div class="meta">${escapeHtml(it.short_id)}</div>
+              </div>
+              <span class="pill pill-level pill-level-${it.level}">L${it.level}</span>
+            </div>
+            <div class="body">${escapeHtml(it.desc)}</div>
+            <div class="foot">
+              <span class="meta">Click to flip</span>
+              ${selected ? `<span class="pill">${labelFor(selected)}</span>` : ''}
+            </div>
+          </div>
+          <div class="card-back">
+            <div class="head"><div class="title">${escapeHtml(it.title)}</div></div>
+            <div class="body">${escapeHtml(it.desc)}</div>
+            <div class="foot">
+              <span class="meta">Select one:</span>
+              <div class="toggle-group" role="group" aria-label="Evidence choice">
+                <div class="toggle ${selected==='yes_splunk'?'active':''}" data-val="yes_splunk">Yes - Splunk</div>
+                <div class="toggle ${selected==='yes_other'?'active':''}"  data-val="yes_other">Yes - Other</div>
+                <div class="toggle ${selected==='no'?'active':''}"         data-val="no">No</div>
+              </div>
+            </div>
+          </div>
+        </div>`;
+
+      // flip on card click, but not when pressing toggles
+div.addEventListener('click', e => {
+  // Ignore clicks on the toggles
+  if (e.target.closest('.toggle-group')) return;
+
+  const alreadyFlipped = div.classList.contains('flipped');
+
+  // Close any other flipped cards
+  document.querySelectorAll('#drma_sections .card.flipped').forEach(c => {
+    if (c !== div) c.classList.remove('flipped');
+  });
+
+  // If this card was not already flipped, flip it open.
+  // If it was already flipped, we leave everything closed.
+  if (!alreadyFlipped) {
+    div.classList.add('flipped');
+  }
+});
+
+      // wire toggles
+      div.querySelectorAll('.toggle').forEach(tg=>{
+        tg.addEventListener('click', e=>{
+          e.stopPropagation();
+          const val = tg.getAttribute('data-val');
+          setAnswer(it.short_id, val);
+          div.querySelectorAll('.toggle').forEach(x=>x.classList.remove('active'));
+          tg.classList.add('active');
+          const foot = div.querySelector('.card-front .foot');
+          const pill = foot.querySelector('.pill');
+          if (pill) pill.remove();
+          const span = document.createElement('span');
+          span.className = 'pill';
+          span.textContent = labelFor(val);
+          foot.appendChild(span);
+        });
+      });
+
+      grid.appendChild(div);
+    });
+
+    host.appendChild(det);
+  });
+}
+
+    // Load an existing assessment ID (entered manually)
+    $('#drma_assessment_load').addEventListener('click', ()=>{
+      const input = $('#drma_assessment_input');
+      const raw   = (input.value || '').trim();
+      if (!raw){
+        alert('Paste an assessment ID first.');
+        input.focus();
+        return;
+      }
+
+      const ok = decodeIntoState(raw);
+      if (!ok){
+        alert('That ID does not look valid for this version of the model.');
+        return;
+      }
+
+      workingId          = raw;
+      state.id           = raw;
+      const idInputEl = $('#drma_id_input');
+      if (idInputEl) idInputEl.value = raw;
+      renderAll();
+      $('#drma_assess_panel').style.display = 'none';
+    });
+
+    $('#drma_assessment_input').addEventListener('keydown', e=>{
+      if (e.key === 'Enter'){
+        e.preventDefault();
+        $('#drma_assessment_load').click();
+      }
+    });
+
+    // Modal used in Step 4 is unchanged
+    function showIdModal(id, onOk){
+      const existing = document.getElementById('drma_id_modal');
+      if (existing) existing.remove();
+
+      const backdrop = document.createElement('div');
+      backdrop.id = 'drma_id_modal';
+      backdrop.className = 'drma-modal-backdrop';
+      backdrop.innerHTML = `
+        <div class="drma-modal" role="dialog" aria-modal="true" aria-labelledby="drma_id_modal_title">
+          <h3 id="drma_id_modal_title">Your assessment ID</h3>
+          <p>Use this ID to reload or share these selections. Keep a copy somewhere safe.</p>
+          <div class="drma-modal-id">${escapeHtml(id)}</div>
+          <div class="drma-modal-actions">
+            <button type="button" class="drma-btn drma-btn--ghost" data-action="copy">Copy ID</button>
+            <button type="button" class="drma-btn drma-btn--ghost" data-action="cancel">Cancel</button>
+            <button type="button" class="drma-btn" data-action="ok">OK, continue</button>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(backdrop);
+
+      const copyBtn   = backdrop.querySelector('[data-action="copy"]');
+      const okBtn     = backdrop.querySelector('[data-action="ok"]');
+      const cancelBtn = backdrop.querySelector('[data-action="cancel"]');
+
+      function cleanup(){
+        backdrop.remove();
+      }
+
+      copyBtn.onclick = async () => {
+        try{
+          await navigator.clipboard.writeText(id);
+          copyBtn.textContent = 'Copied';
+          setTimeout(()=>{ copyBtn.textContent = 'Copy ID'; }, 1500);
+        } catch(e){
+          alert(id);
+        }
+      };
+
+      okBtn.onclick = () => {
+        cleanup();
+        if (typeof onOk === 'function') onOk();
+      };
+
+      cancelBtn.onclick = () => {
+        cleanup();
+      };
+
+      backdrop.addEventListener('click', e=>{
+        if (e.target === backdrop) cleanup();
+      });
+    }
+
+// Step 4 submit
+$('#drma_submit').addEventListener('click', ()=>{
+  const input = $('#drma_id_input');  // may be null, as the field is not on this page
+  const raw   = input ? (input.value || '').trim() : '';
+  let finalId;
+
+  if (raw){
+    const ok = decodeIntoState(raw);
+    if (!ok){
+      alert('That ID does not look valid for this version of the model.');
+      return;
+    }
+    finalId   = raw;
+    workingId = raw;
+    state.id  = raw;
+    persist();
+    saveAnswers(answers);
+    renderAll();
+  } else {
+    if (!state.business || !state.operational){
+      alert('Pick a Business objective and an Operational outcome first.');
+      return;
+    }
+
+    const code = encodeCurrentState();
+    if (!code){
+      alert('Could not generate an ID yet. Try again after choosing your selections.');
+      return;
+    }
+
+    finalId   = code;
+    workingId = code;
+    state.id  = code;
+
+    // Only set the input if it exists
+    if (input){
+      input.value = code;
+    }
+
+    persist();
+    saveAnswers(answers);
+  }
+
+  showIdModal(finalId, ()=>{
+    location.href = `assessment.html?a=${encodeURIComponent(finalId)}`;
+  });
+});
+
+    function renderAll(){
+      renderRadios('#drma_business', BUSINESS, 'business');
+      renderRadios('#drma_operational', OPERATIONAL, 'operational');
+      $('#dora_hint').style.display = state.operational==='DORA' ? 'block' : 'none';
+      renderLevels();
+      renderSections();
+      if (workingId) {
+        const idInputEl = $('#drma_id_input');
+        if (idInputEl) idInputEl.value = workingId;
+      }
+    }
+
+    // Bootstrap: pre-create storage shell if navigated with ?a=
+    if(workingId && !localStorage.getItem(key(workingId))){
+      localStorage.setItem(key(workingId), JSON.stringify(state));
+      // refreshAssessments(); // if you had this elsewhere
+    }
+
+    // Load decks, then render
+    Promise.all([
+      loadCSV(LOOKUPS.PRACTICES),
+      loadCSV(LOOKUPS.DORA)
+    ]).then(([pr,dora])=>{
+      PRACTICES = (pr||[]).map(normPractice);
+      DORA_ONLY = (dora||[]).map(normPractice);
+      renderSections();
+    });
+
+    // Initial UI
+    renderAll();
+  })();
+</script>
+</body>
+</html>
